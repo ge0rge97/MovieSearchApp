@@ -14,17 +14,9 @@ class AuthBaseView: BaseView {
     
     let authButton = AuthButton()
     let googleButton = GoogleAuthButton()
-    
+
     private let orView = OrView()
     private let mainStackView = UIStackView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()

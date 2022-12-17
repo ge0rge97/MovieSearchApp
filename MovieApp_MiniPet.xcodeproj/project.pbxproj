@@ -25,6 +25,12 @@
 		0114B2D3294D1C4700693CDA /* LoginRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D2294D1C4700693CDA /* LoginRootView.swift */; };
 		0114B2D7294D1DAE00693CDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */; };
 		0114B2D9294D1DC100693CDA /* SignUpRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D8294D1DC100693CDA /* SignUpRootView.swift */; };
+		01342087294DD24F00C91D24 /* StartRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01342086294DD24F00C91D24 /* StartRootView.swift */; };
+		01342089294DD28500C91D24 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01342088294DD28500C91D24 /* StartViewController.swift */; };
+		0134208C294DDA3900C91D24 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134208B294DDA3900C91D24 /* TabBarController.swift */; };
+		0134208E294DDDBD00C91D24 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134208D294DDDBD00C91D24 /* BaseNavigationController.swift */; };
+		01342092294DDDEC00C91D24 /* HomeRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01342091294DDDEC00C91D24 /* HomeRootView.swift */; };
+		01342094294DDE1000C91D24 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01342093294DDE1000C91D24 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,12 @@
 		0114B2D2294D1C4700693CDA /* LoginRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRootView.swift; sourceTree = "<group>"; };
 		0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0114B2D8294D1DC100693CDA /* SignUpRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRootView.swift; sourceTree = "<group>"; };
+		01342086294DD24F00C91D24 /* StartRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRootView.swift; sourceTree = "<group>"; };
+		01342088294DD28500C91D24 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		0134208B294DDA3900C91D24 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0134208D294DDDBD00C91D24 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		01342091294DDDEC00C91D24 /* HomeRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootView.swift; sourceTree = "<group>"; };
+		01342093294DDE1000C91D24 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +92,9 @@
 		0114B29E294D021600693CDA /* MovieApp_MiniPet */ = {
 			isa = PBXGroup;
 			children = (
+				0134208F294DDDDB00C91D24 /* Home */,
 				0114B2C0294D06F400693CDA /* Auth */,
+				0134208A294DDA2E00C91D24 /* TabBar */,
 				0114B2B5294D02F100693CDA /* Base */,
 				0114B2BD294D054500693CDA /* Resources */,
 				0114B2BA294D047400693CDA /* Extensions */,
@@ -114,6 +128,7 @@
 			children = (
 				0114B2B6294D02F800693CDA /* BaseView.swift */,
 				0114B2B8294D034900693CDA /* BaseViewController.swift */,
+				0134208D294DDDBD00C91D24 /* BaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -138,6 +153,7 @@
 		0114B2C0294D06F400693CDA /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				01342084294DD21C00C91D24 /* StartScreen */,
 				0114B2C1294D06FA00693CDA /* Login */,
 				0114B2D4294D1DA000693CDA /* SignUp */,
 				0114B2C9294D0CA600693CDA /* BaseViews */,
@@ -187,6 +203,48 @@
 			children = (
 				0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */,
 				0114B2D8294D1DC100693CDA /* SignUpRootView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		01342084294DD21C00C91D24 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				01342085294DD22300C91D24 /* Views */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		01342085294DD22300C91D24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01342086294DD24F00C91D24 /* StartRootView.swift */,
+				01342088294DD28500C91D24 /* StartViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0134208A294DDA2E00C91D24 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0134208B294DDA3900C91D24 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		0134208F294DDDDB00C91D24 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				01342090294DDDE000C91D24 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		01342090294DDDE000C91D24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				01342091294DDDEC00C91D24 /* HomeRootView.swift */,
+				01342093294DDE1000C91D24 /* HomeViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,15 +321,21 @@
 			files = (
 				0114B2D3294D1C4700693CDA /* LoginRootView.swift in Sources */,
 				0114B2D1294D199100693CDA /* OrView.swift in Sources */,
+				01342092294DDDEC00C91D24 /* HomeRootView.swift in Sources */,
 				0114B2CF294D17C800693CDA /* GoogleAuthButton.swift in Sources */,
 				0114B2C6294D07BE00693CDA /* LoginViewController.swift in Sources */,
 				0114B2D9294D1DC100693CDA /* SignUpRootView.swift in Sources */,
+				01342089294DD28500C91D24 /* StartViewController.swift in Sources */,
+				01342094294DDE1000C91D24 /* HomeViewController.swift in Sources */,
 				0114B2CB294D0CD300693CDA /* AuthTextField.swift in Sources */,
 				0114B2B9294D034900693CDA /* BaseViewController.swift in Sources */,
+				0134208E294DDDBD00C91D24 /* BaseNavigationController.swift in Sources */,
 				0114B2BC294D048C00693CDA /* UIColor+ HexString.swift in Sources */,
 				0114B2BF294D054C00693CDA /* Resources.swift in Sources */,
+				0134208C294DDA3900C91D24 /* TabBarController.swift in Sources */,
 				0114B2A0294D021600693CDA /* AppDelegate.swift in Sources */,
 				0114B2D7294D1DAE00693CDA /* SignUpViewController.swift in Sources */,
+				01342087294DD24F00C91D24 /* StartRootView.swift in Sources */,
 				0114B2CD294D0F4600693CDA /* AuthButton.swift in Sources */,
 				0114B2A2294D021600693CDA /* SceneDelegate.swift in Sources */,
 				0114B2C4294D070B00693CDA /* AuthBaseView.swift in Sources */,

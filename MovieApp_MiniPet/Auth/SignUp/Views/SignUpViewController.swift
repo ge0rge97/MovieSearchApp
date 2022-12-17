@@ -25,7 +25,7 @@ private extension SignUpViewController {
     }
     func setupButtonAction() {
         
-        mainView.authButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+        mainView.authButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
         mainView.googleButton.addTarget(self, action: #selector(googleAuthButtonAction), for: .touchUpInside)
     }
 }
@@ -33,7 +33,7 @@ private extension SignUpViewController {
 @objc
 private extension SignUpViewController {
     
-    func loginButtonAction() {
+    func signUpButtonAction() {
         print(#function)
     }
     func googleAuthButtonAction() {

@@ -11,7 +11,7 @@ class BaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        setupConstraints()
+        //setupConstraints()
         configureAppearance()
     }
     required init?(coder: NSCoder) {
@@ -21,7 +21,7 @@ class BaseView: UIView {
 //MARK: - Inherited Methods
 extension BaseView {
     @objc func setupViews() {}
-    @objc func setupConstraints() {}
+    //@objc func setupConstraints() {}
     @objc func configureAppearance() {
         self.backgroundColor = R.Colors.mainBackground
     }
