@@ -24,7 +24,7 @@ class BaseNavigationController: UINavigationController {
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         navigationBarAppearance.titleTextAttributes = [
             .foregroundColor: R.Colors.mainWhite,
-            .font: R.Fonts.boldFont(withSize: 24) ?? .boldSystemFont(ofSize: 24)
+            .font: R.Fonts.boldFont(withSize: 20) ?? .boldSystemFont(ofSize: 20)
         ]
     }
 }
