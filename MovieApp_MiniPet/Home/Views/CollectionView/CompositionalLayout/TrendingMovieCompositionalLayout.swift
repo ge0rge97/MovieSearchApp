@@ -17,9 +17,11 @@ class TrendingMovieCompositionalLayout: CompositionalLayoutFactoryProtocol {
         group.interItemSpacing = .fixed(20)
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 36, leading: 20, bottom: 10, trailing: 20)
-//                let sectionHeader = SectionHeader.shared.createSectionHeader()
-//                section.boundarySupplementaryItems = [sectionHeader] //Header
-        return section //Return
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 46, leading: 20, bottom: 20, trailing: 20)
+        
+        let sectionHeader = SectionHeader.shared.createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader] //Header
+        
+        return section
     }
 }

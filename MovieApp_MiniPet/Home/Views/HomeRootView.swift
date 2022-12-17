@@ -11,6 +11,7 @@ final class HomeRootView: BaseView {
     
     lazy var collectionView = BaseCollectionView(withLayout: createCompositionalLayout())
     let compositionalLayoutFactory = CompositionalLayoutFactory()
+    
 }
 //MARK: - Required Methods
 extension HomeRootView {
@@ -20,8 +21,6 @@ extension HomeRootView {
     }
     override func configureAppearance() {
         super.configureAppearance()
-        
-        self.collectionView.backgroundColor = .brown
     }
 }
 //MARK: - CollectionView CompositionalLayout

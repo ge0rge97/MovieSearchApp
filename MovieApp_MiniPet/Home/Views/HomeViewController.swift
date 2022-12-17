@@ -33,12 +33,10 @@ final class HomeViewController: BaseViewController<HomeRootView> {
         setupCollectionViewDataSource()
         reloadData()
     }
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,7 +46,7 @@ private extension HomeViewController {
     
     func setupNavigationBar() {
         
-        self.navigationItem.title = "Trending now"
+        self.navigationItem.title = "Home"
         self.navigationItem.rightBarButtonItem = self.createLogOutBarButton()
     }
     func createLogOutBarButton() -> UIBarButtonItem {
@@ -59,7 +57,13 @@ private extension HomeViewController {
     }
     func setupCollectionView() {
         
-        mainView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        mainView.collectionView.register(UpcomingMovieCollectionViewCell.self,
+                                         forCellWithReuseIdentifier: UpcomingMovieCollectionViewCell.reuseId)
+        mainView.collectionView.register(TrendingMovieCollectionViewCell.self,
+                                         forCellWithReuseIdentifier: TrendingMovieCollectionViewCell.reuseId)
+        mainView.collectionView.register(HomeCollectionViewHeaderCell.self,
+                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                         withReuseIdentifier: HomeCollectionViewHeaderCell.reuseId)
     }
 }
 //MARK: - Setup CollectionsView with DataSource
@@ -69,29 +73,49 @@ private extension HomeViewController {
         self.dataSource = UICollectionViewDiffableDataSource<HomeCollectionViewSection, AnyHashable>(collectionView: mainView.collectionView,
                                                                                    cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
             
-            guard let section = HomeCollectionViewSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
+            guard let section = HomeCollectionViewSection(rawValue: indexPath.section)
+                else { return UICollectionViewCell() }
                   
-            let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                                               for: indexPath)
+            switch section {
+            case .upcomingMovies:
+                guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingMovieCollectionViewCell.reuseId,
+                                                                                   for: indexPath) as? UpcomingMovieCollectionViewCell
+                    else { return UICollectionViewCell() }
+                
+                cell.layer.borderWidth = 2
+                
+                return cell
+            case .trendingMovies:
+                guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: TrendingMovieCollectionViewCell.reuseId,
+                                                                                   for: indexPath) as? TrendingMovieCollectionViewCell
+                    else { return UICollectionViewCell() }
+                
+                cell.layer.borderWidth = 1
+                cell.savedButton.addTarget(self, action: #selector(self?.savedButtonTrendingCellAction), for: .touchUpInside)
+                
+                return cell
+            }
             
-            cell?.layer.borderWidth = 2
-            
-            return cell
+           
         })
-//        self.dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-//
-//            guard let section = Section(rawValue: indexPath.section),
-//                  let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MainScreenCollectionViewHeaderCell.reuseId, for: indexPath)
-//                    as? MainScreenCollectionViewHeaderCell
-//            else { fatalError() }
-//
-//            switch section {
-//            case .popularMovie: sectionHeader.configureTitle(title: section.setTitleHeader(forSection: .popularMovie))
-//            case .tvShow: sectionHeader.configureTitle(title: section.setTitleHeader(forSection: .popularMovie))
-//            }
-//
-//            return sectionHeader
-//        }
+        self.dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+
+            guard let section = HomeCollectionViewSection(rawValue: indexPath.section),
+                  let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                      withReuseIdentifier: HomeCollectionViewHeaderCell.reuseId,
+                                                                                      for: indexPath)
+                    as? HomeCollectionViewHeaderCell
+            else { fatalError() }
+
+            switch section {
+            case .upcomingMovies:
+                sectionHeader.configureTitle(title: section.setTitleHeader(forSection: .upcomingMovies))
+            case .trendingMovies:
+                sectionHeader.configureTitle(title: section.setTitleHeader(forSection: .trendingMovies))
+            }
+
+            return sectionHeader
+        }
     }
     func reloadData() {
         
@@ -107,6 +131,9 @@ private extension HomeViewController {
 private extension HomeViewController {
     
     func logOutButtonAction() {
+        print(#function)
+    }
+    func savedButtonTrendingCellAction() {
         print(#function)
     }
 }

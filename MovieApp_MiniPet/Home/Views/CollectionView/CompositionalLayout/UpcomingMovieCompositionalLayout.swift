@@ -16,10 +16,12 @@ class UpcomingMovieCompositionalLayout: CompositionalLayoutFactoryProtocol {
         let group                           = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section                         = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing           = 20
-        section.contentInsets               = NSDirectionalEdgeInsets.init(top: 36, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets               = NSDirectionalEdgeInsets.init(top: 46, leading: 20, bottom: 20, trailing: 20)
         section.orthogonalScrollingBehavior = .continuous
-//                let sectionHeader = SectionHeader.shared.createSectionHeader()
-//                section.boundarySupplementaryItems = [sectionHeader] //Header
+        
+        let sectionHeader = SectionHeader.shared.createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader] //Header
+        
         return section
     }
 }
