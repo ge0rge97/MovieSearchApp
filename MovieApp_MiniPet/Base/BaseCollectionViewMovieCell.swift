@@ -38,5 +38,8 @@ private extension BaseCollectionViewMovieCell {
     }
     func configureAppearance() {
         [movieCellImage].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+        
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
     }
 }
