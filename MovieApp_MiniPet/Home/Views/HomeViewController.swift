@@ -33,30 +33,20 @@ final class HomeViewController: BaseViewController<HomeRootView> {
         setupCollectionViewDataSource()
         reloadData()
     }
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 //MARK: - Private Methods
 private extension HomeViewController {
     
     func setupNavigationBar() {
-        
         self.navigationItem.title = "Home"
         self.navigationItem.rightBarButtonItem = self.createLogOutBarButton()
     }
     func createLogOutBarButton() -> UIBarButtonItem {
-        
         return UIBarButtonItem.menuButton(self, action: #selector(logOutButtonAction),
                                           imageName: "logout", tintColor: R.Colors.baseButtonColor)
         
     }
     func setupCollectionView() {
-        
         mainView.collectionView.register(UpcomingMovieCollectionViewCell.self,
                                          forCellWithReuseIdentifier: UpcomingMovieCollectionViewCell.reuseId)
         mainView.collectionView.register(TrendingMovieCollectionViewCell.self,
@@ -64,6 +54,7 @@ private extension HomeViewController {
         mainView.collectionView.register(HomeCollectionViewHeaderCell.self,
                                          forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                          withReuseIdentifier: HomeCollectionViewHeaderCell.reuseId)
+        mainView.collectionView.delegate = self
     }
 }
 //MARK: - Setup CollectionsView with DataSource
@@ -95,8 +86,6 @@ private extension HomeViewController {
                 
                 return cell
             }
-            
-           
         })
         self.dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
 
@@ -106,14 +95,12 @@ private extension HomeViewController {
                                                                                       for: indexPath)
                     as? HomeCollectionViewHeaderCell
             else { fatalError() }
-
             switch section {
             case .upcomingMovies:
                 sectionHeader.configureTitle(title: section.setTitleHeader(forSection: .upcomingMovies))
             case .trendingMovies:
                 sectionHeader.configureTitle(title: section.setTitleHeader(forSection: .trendingMovies))
             }
-
             return sectionHeader
         }
     }
@@ -124,6 +111,12 @@ private extension HomeViewController {
         snapshot.appendItems(upcomingMovieData, toSection: .upcomingMovies)
         snapshot.appendItems(trendingMovieData, toSection: .trendingMovies)
         self.dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+//MARK: - CollectionView Delegate
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
     }
 }
 //MARK: - Buttons Action

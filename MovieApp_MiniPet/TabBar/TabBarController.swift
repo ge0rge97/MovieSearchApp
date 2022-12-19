@@ -19,7 +19,7 @@ final class TabBarController: UITabBarController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         configureAppearance()
-        selectTab(withTab: .home)
+        selectTab(withTab: .search)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,10 +35,8 @@ extension TabBarController {
         tabBarItemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.Colors.mainWhite]
         tabBarItemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.Colors.separator]
         tabBarAppearance.backgroundColor = R.Colors.mainBackground
-        
         tabBar.standardAppearance = tabBarAppearance
         tabBar.scrollEdgeAppearance = tabBarAppearance
-        
         tabBar.tintColor = R.Colors.mainWhite
         
         let controllers: [BaseNavigationController] = Tabs.allCases.map { tab in
@@ -55,9 +53,9 @@ extension TabBarController {
         case .home:
             return HomeViewController()
         case .list:
-            return UIViewController()
+            return ListViewController()
         case .search:
-            return UIViewController()
+            return SearchViewController()
         }
     }
     private func selectTab(withTab tab: Tabs) {

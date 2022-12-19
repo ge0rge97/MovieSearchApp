@@ -25,11 +25,11 @@ extension HomeRootView {
 }
 //MARK: - CollectionView CompositionalLayout
 private extension HomeRootView {
+    
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { index, environment -> NSCollectionLayoutSection? in
             
             guard let section = HomeCollectionViewSection(rawValue: index) else { fatalError() }
-            
             switch section {
             case .upcomingMovies:
                 return self.compositionalLayoutFactory.createCompositionalLayout(sectionType: .upcomingMovies).createCompositionalLayoutForSection()
