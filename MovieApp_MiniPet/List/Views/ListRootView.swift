@@ -10,6 +10,7 @@ import UIKit
 final class ListRootView: BaseView {
     
     lazy var collectionView = BaseCollectionView(withLayout: createCompositionalLayout())
+    private let compositionalLayout = SavedMovieCompositionalLayout(isHeaderNeeded: false)
 }
 //MARK: - Required Methods
 extension ListRootView {
@@ -30,7 +31,7 @@ private extension ListRootView {
             guard let section = ListCollectionViewSection(rawValue: index) else { fatalError() }
             switch section {
             case .saved:
-                return SavedMovieCompositionalLayout.shared.createCompositionalLayoutForSection()
+                return self.compositionalLayout.createCompositionalLayoutForSection()
             }
         }
         return layout

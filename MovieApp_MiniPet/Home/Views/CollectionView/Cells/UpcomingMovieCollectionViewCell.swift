@@ -6,15 +6,26 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class UpcomingMovieCollectionViewCell: BaseCollectionViewMovieCell {
     
     static let reuseId: String = "upcomingMovieCollectionViewCell"
     
+    weak var cellViewModel: DetailMovieViewModelProtocol? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+            
+            let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
+            movieCellImage.sd_setImage(with: url)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         movieCellImage.backgroundColor = .red
+        self.backgroundColor = .green
     }
     
     required init?(coder: NSCoder) {

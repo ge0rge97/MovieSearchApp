@@ -9,9 +9,17 @@ import UIKit
 
 final class TrendingMovieCollectionViewCell: BaseCollectionViewMovieCell {
     
+    static let reuseId: String = "trendingMovieCollectionViewCell"
     let savedButton = UIButton()
     
-    static let reuseId: String = "trendingMovieCollectionViewCell"
+    weak var cellViewModel: DetailMovieViewModelProtocol? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+            
+            let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
+            movieCellImage.sd_setImage(with: url)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

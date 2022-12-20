@@ -19,7 +19,7 @@ class CompositionalLayoutFactory {
         case .upcomingMovies:
             return UpcomingMovieCompositionalLayout()
         case .trendingMovies:
-            return TrendingMovieCompositionalLayout()
+            return TrendingMovieCompositionalLayout(isHeaderNeeded: true)
         }
     }
 }

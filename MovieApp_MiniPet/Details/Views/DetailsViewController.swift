@@ -6,13 +6,27 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class DetailsViewController: BaseViewController<DetailsRootView> {
+    
+    var viewModel: DetailMovieViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupButtonActions()
+        
+        guard let viewModel = viewModel else { return }
+        
+        mainView.detailsMoveTitle.text = viewModel.title
+        mainView.releasedMovieYearLabel.text = viewModel.date
+        mainView.detailsMovieOverviewLabel.text = viewModel.overview
+        mainView.genresLabel.text = viewModel.genre
+        mainView.averageRatingButton.setTitle(viewModel.rating, for: .normal)
+        
+        let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
+        mainView.detailsMovieImage.sd_setImage(with: url)
     }
 }
 //MARK: - Private Methods

@@ -11,6 +11,7 @@ final class SearchRootView: BaseView {
     
     let searchBar = MovieSearchBar()
     lazy var collectionView = BaseCollectionView(withLayout: createCompositionalLayout())
+    let compositionalLayout = SearchMovieCompositionalLayout(isHeaderNeeded: false)
 }
 //MARK: - Required Methods
 extension SearchRootView {
@@ -31,7 +32,7 @@ private extension SearchRootView {
             guard let section = ListCollectionViewSection(rawValue: index) else { fatalError() }
             switch section {
             case .saved:
-                return SearchMovieCompositionalLayout.shared.createCompositionalLayoutForSection()
+                return self.compositionalLayout.createCompositionalLayoutForSection()
             }
         }
         return layout

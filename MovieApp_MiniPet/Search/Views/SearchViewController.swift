@@ -12,10 +12,10 @@ final class SearchViewController: BaseViewController<SearchRootView> {
     private var dataSource: UICollectionViewDiffableDataSource<SearchCollectionViewSection, AnyHashable>!
     
     var savedMovieData: [MovieModel] = [
-        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: [], releaseDate: "", averageRating: 2),
-        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: [], releaseDate: "", averageRating: 3),
-        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: [], releaseDate: "", averageRating: 2),
-        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: [], releaseDate: "", averageRating: 3),
+        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 2),
+        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 3),
+        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 2),
+        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 3),
     ]
     
     override func viewDidLoad() {

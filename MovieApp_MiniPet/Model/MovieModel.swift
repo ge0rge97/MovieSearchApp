@@ -13,7 +13,7 @@ struct MovieModel: Hashable {
     let movieTitle: String
     let movieImagePath: String
     let movieOverview: String
-    let movieGenres: [String]
+    let movieGenres: String
     let releaseDate: String
     let averageRating: Double
     

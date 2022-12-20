@@ -19,7 +19,7 @@ final class TabBarController: UITabBarController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         configureAppearance()
-        selectTab(withTab: .search)
+        selectTab(withTab: .home)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
