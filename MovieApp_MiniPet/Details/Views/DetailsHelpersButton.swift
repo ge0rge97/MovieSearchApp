@@ -17,7 +17,6 @@ final class DetailsHelpersButton: UIButton {
     }
     convenience init(title: String, buttonIcon: UIImage?) {
         self.init(frame: .zero)
-        
         setupViews()
         setupConstraints()
         configureAppearance()
@@ -27,6 +26,9 @@ final class DetailsHelpersButton: UIButton {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    func setTitleIfNeeded(_ title: String) {
+        buttonTitleLabel.text = title
     }
 }
 //MARK: - Private Methods

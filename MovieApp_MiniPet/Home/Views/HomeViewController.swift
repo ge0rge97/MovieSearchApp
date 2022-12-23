@@ -11,38 +11,22 @@ final class HomeViewController: BaseViewController<HomeRootView> {
     
     private var dataSource: UICollectionViewDiffableDataSource<HomeCollectionViewSection, AnyHashable>!
     
-    private var upcomingViewModel: MovieViewModel?
-    private var trendingViewModel: MovieViewModel?
-    let networking = NetworkingViewModel()
+    private var trendingViewModel: HomeViewModelProtocol = HomeViewModel()
+    private var upcomingViewModel: HomeViewModelProtocol = HomeViewModel()
     
-    var upcomingMovieData: [MovieModel] {
-        return upcomingViewModel?.movieData ?? []
-    }
-    var trendingMovieData: [MovieModel] {
-        return trendingViewModel?.movieData ?? []
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setupNavigationBar()
         setupCollectionView()
         setupCollectionViewDataSource()
-        reloadData()
-
-        networking.fetchMovieData(withPath: .upcoming) { result in
-
-            self.upcomingViewModel = MovieViewModel(withFetchedData: result ?? [])
-            self.reloadData()
-        }
-        networking.fetchMovieData(withPath: .trending) { result in
-
-            self.trendingViewModel = MovieViewModel(withFetchedData: result ?? [])
-            self.reloadData()
-        }
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.trendingViewModel.getFetchedData(withCategory: .trending)
+        self.upcomingViewModel.getFetchedData(withCategory: .upcoming)
+        bindViewModel()
     }
 }
 //MARK: - Private Methods
@@ -66,6 +50,29 @@ private extension HomeViewController {
                                          withReuseIdentifier: HomeCollectionViewHeaderCell.reuseId)
         mainView.collectionView.delegate = self
     }
+    func bindViewModel() {
+        
+        trendingViewModel.isLoading.bind { [weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.mainView.indicatorView.startAnimating()
+                } else {
+                    self?.mainView.indicatorView.stopAnimating()
+                    self?.reloadData()
+                }
+            }
+        }
+        upcomingViewModel.isLoading.bind { [weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.mainView.indicatorView.startAnimating()
+                } else {
+                    self?.mainView.indicatorView.stopAnimating()
+                    self?.reloadData()
+                }
+            }
+        }
+    }
 }
 //MARK: - Setup CollectionsView with DataSource
 private extension HomeViewController {
@@ -82,18 +89,14 @@ private extension HomeViewController {
                 guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingMovieCollectionViewCell.reuseId,
                                                                                    for: indexPath) as? UpcomingMovieCollectionViewCell
                     else { return UICollectionViewCell() }
-                
-                cell.cellViewModel = self?.upcomingViewModel?.cellViewModel(forIndexPath: indexPath)
-                
+                cell.cellViewModel = self?.upcomingViewModel.cellViewModel(forIndexPath: indexPath)
                 return cell
             case .trendingMovies:
                 guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: TrendingMovieCollectionViewCell.reuseId,
                                                                                    for: indexPath) as? TrendingMovieCollectionViewCell
                     else { return UICollectionViewCell() }
-                
-                cell.cellViewModel = self?.trendingViewModel?.cellViewModel(forIndexPath: indexPath)
+                cell.cellViewModel = self?.trendingViewModel.cellViewModel(forIndexPath: indexPath)
                 cell.savedButton.addTarget(self, action: #selector(self?.savedButtonTrendingCellAction), for: .touchUpInside)
-                
                 return cell
             }
         })
@@ -118,8 +121,8 @@ private extension HomeViewController {
         
         var snapshot = NSDiffableDataSourceSnapshot<HomeCollectionViewSection, AnyHashable>()
         snapshot.appendSections([.upcomingMovies, .trendingMovies])
-        snapshot.appendItems(upcomingMovieData, toSection: .upcomingMovies)
-        snapshot.appendItems(trendingMovieData, toSection: .trendingMovies)
+        snapshot.appendItems(upcomingViewModel.movieData, toSection: .upcomingMovies)
+        snapshot.appendItems(trendingViewModel.movieData, toSection: .trendingMovies)
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
@@ -129,17 +132,15 @@ extension HomeViewController: UICollectionViewDelegate {
         
         let detailVC = DetailsViewController()
         
-        
         guard let section = HomeCollectionViewSection(rawValue: indexPath.section) else { return }
         switch section {
         case .upcomingMovies:
-            upcomingViewModel?.selectRow(atIndexPath: indexPath)
-            detailVC.viewModel = upcomingViewModel?.viewModelForSelectedRow(withData: upcomingMovieData)
+            upcomingViewModel.selectRow(atIndexPath: indexPath)
+            detailVC.viewModel = upcomingViewModel.viewModelForSelectedRow()
         case .trendingMovies:
-            trendingViewModel?.selectRow(atIndexPath: indexPath)
-            detailVC.viewModel = trendingViewModel?.viewModelForSelectedRow(withData: trendingMovieData)
+            trendingViewModel.selectRow(atIndexPath: indexPath)
+            detailVC.viewModel = trendingViewModel.viewModelForSelectedRow()
         }
-        
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -150,7 +151,10 @@ private extension HomeViewController {
     func logOutButtonAction() {
         print(#function)
     }
-    func savedButtonTrendingCellAction() {
-        print(#function)
+    func savedButtonTrendingCellAction(_ sender: UIButton) {
+        
+        guard let indexPath = self.getCurrentIndexPath(withSender: sender,
+                                                       andCollectionView: mainView.collectionView) else { return }
+        trendingViewModel.addSelectedMovieToList(atIndexPath: indexPath)
     }
 }

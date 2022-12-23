@@ -33,7 +33,6 @@ extension NetworkingViewModel {
             return nil
         }
         do {
-            
             let items = try decoder.decode(type, from: data)
             return items
         } catch let decodingError {

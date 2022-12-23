@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieModel: Hashable {
+struct MovieModel: Hashable, Codable {
     
     let movieId: Int
     let movieTitle: String
@@ -24,4 +24,13 @@ struct MovieModel: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(uuid)
     }
+    private enum CodingKeys: CodingKey {
+        case movieId
+        case movieTitle
+        case movieImagePath
+        case movieOverview
+        case movieGenres
+        case releaseDate
+        case averageRating
+    } //Required Hashable Methods
 }

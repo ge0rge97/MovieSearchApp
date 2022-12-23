@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class TrendingMovieCollectionViewCell: BaseCollectionViewMovieCell {
     
@@ -20,11 +21,8 @@ final class TrendingMovieCollectionViewCell: BaseCollectionViewMovieCell {
             movieCellImage.sd_setImage(with: url)
         }
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        movieCellImage.backgroundColor = .green
         
         setupViews()
         setupConstraints()
@@ -34,7 +32,7 @@ final class TrendingMovieCollectionViewCell: BaseCollectionViewMovieCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-//MARK: - Override Methods
+//MARK: - Private Methods
 extension TrendingMovieCollectionViewCell {
     
     func setupViews() {

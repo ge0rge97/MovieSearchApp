@@ -11,16 +11,27 @@ final class HomeRootView: BaseView {
     
     lazy var collectionView = BaseCollectionView(withLayout: createCompositionalLayout())
     let compositionalLayoutFactory = CompositionalLayoutFactory()
+    let indicatorView = UIActivityIndicatorView()
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        NSLayoutConstraint.activate([
+            indicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
 }
 //MARK: - Required Methods
 extension HomeRootView {
     
     override func setupViews() {
-        [collectionView].forEach{ addSubview($0) }
+        [collectionView, indicatorView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
+        [indicatorView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+        
+        indicatorView.color = R.Colors.mainWhite
     }
 }
 //MARK: - CollectionView CompositionalLayout

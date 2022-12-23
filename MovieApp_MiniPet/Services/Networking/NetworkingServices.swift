@@ -34,7 +34,6 @@ class NetworkingServices {
         let task = self.createDataTask(fromRequest: request,
                                        completion: completion)
         task.resume()
-        print(url)
     }
     private func getMovieApiUrl(withParameters parameters: [String: String], andPath path: PathMovieCategory)-> URL {
         var components = URLComponents()

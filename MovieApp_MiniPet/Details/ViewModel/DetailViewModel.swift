@@ -14,9 +14,12 @@ protocol DetailMovieViewModelProtocol: AnyObject {
     var rating: String { get }
     var overview: String { get }
     var genre: String { get }
+    
+    func addSelectedMovieToList()
 }
 
 class DetailViewModel: DetailMovieViewModelProtocol {
+    
     private var item: MovieModel
     
     var title: String {
@@ -35,10 +38,18 @@ class DetailViewModel: DetailMovieViewModelProtocol {
         return item.movieOverview
     }
     var genre: String {
-        return "item.movieGenres"
+        return item.movieGenres
     }
     
     init(item: MovieModel) {
         self.item = item
+    }
+}
+//MARK: - Add to List
+extension DetailViewModel {
+    
+    func addSelectedMovieToList() {
+        let listVM = ListViewModel()
+        listVM.addItem(item)
     }
 }

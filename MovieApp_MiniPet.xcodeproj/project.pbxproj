@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010EDCBF295635290078FB0F /* String+ FormatDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EDCBE295635290078FB0F /* String+ FormatDate.swift */; };
+		010EDCC22956360B0078FB0F /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EDCC12956360B0078FB0F /* ListViewModel.swift */; };
+		010EDCC5295636690078FB0F /* MovieViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EDCC4295636690078FB0F /* MovieViewModelProtocol.swift */; };
+		010EDCC7295636780078FB0F /* AddToListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EDCC6295636780078FB0F /* AddToListViewModelProtocol.swift */; };
+		010EDCC9295636920078FB0F /* FetchedDataViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EDCC8295636920078FB0F /* FetchedDataViewModelProtocol.swift */; };
+		010EDCCB295636B40078FB0F /* ViewModelObservable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EDCCA295636B40078FB0F /* ViewModelObservable+.swift */; };
+		010EDCCF2956370B0078FB0F /* MementoStateSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010EDCCE2956370B0078FB0F /* MementoStateSaver.swift */; };
 		010FA0B829508A7A00FA3A2F /* ListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010FA0B729508A7A00FA3A2F /* ListRootView.swift */; };
 		010FA0BA29508AA700FA3A2F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010FA0B929508AA700FA3A2F /* ListViewController.swift */; };
 		0114B2A0294D021600693CDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B29F294D021600693CDA /* AppDelegate.swift */; };
@@ -30,7 +37,7 @@
 		011865DB2952590E00DBCD14 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 011865DA2952590E00DBCD14 /* SDWebImage */; };
 		0119016029523321003D75D8 /* NetworkingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119015F29523321003D75D8 /* NetworkingViewModel.swift */; };
 		0119016329523381003D75D8 /* MovieNetworkingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119016229523381003D75D8 /* MovieNetworkingDataModel.swift */; };
-		0119016629523428003D75D8 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119016529523428003D75D8 /* MovieViewModel.swift */; };
+		0119016629523428003D75D8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119016529523428003D75D8 /* HomeViewModel.swift */; };
 		0119016929523455003D75D8 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119016829523455003D75D8 /* DetailViewModel.swift */; };
 		01342087294DD24F00C91D24 /* StartRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01342086294DD24F00C91D24 /* StartRootView.swift */; };
 		01342089294DD28500C91D24 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01342088294DD28500C91D24 /* StartViewController.swift */; };
@@ -67,6 +74,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010EDCBE295635290078FB0F /* String+ FormatDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ FormatDate.swift"; sourceTree = "<group>"; };
+		010EDCC12956360B0078FB0F /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		010EDCC4295636690078FB0F /* MovieViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModelProtocol.swift; sourceTree = "<group>"; };
+		010EDCC6295636780078FB0F /* AddToListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToListViewModelProtocol.swift; sourceTree = "<group>"; };
+		010EDCC8295636920078FB0F /* FetchedDataViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataViewModelProtocol.swift; sourceTree = "<group>"; };
+		010EDCCA295636B40078FB0F /* ViewModelObservable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModelObservable+.swift"; sourceTree = "<group>"; };
+		010EDCCE2956370B0078FB0F /* MementoStateSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoStateSaver.swift; sourceTree = "<group>"; };
 		010FA0B729508A7A00FA3A2F /* ListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRootView.swift; sourceTree = "<group>"; };
 		010FA0B929508AA700FA3A2F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0114B29C294D021600693CDA /* MovieApp_MiniPet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp_MiniPet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +105,7 @@
 		0114B2D8294D1DC100693CDA /* SignUpRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRootView.swift; sourceTree = "<group>"; };
 		0119015F29523321003D75D8 /* NetworkingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingViewModel.swift; sourceTree = "<group>"; };
 		0119016229523381003D75D8 /* MovieNetworkingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNetworkingDataModel.swift; sourceTree = "<group>"; };
-		0119016529523428003D75D8 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		0119016529523428003D75D8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0119016829523455003D75D8 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		01342086294DD24F00C91D24 /* StartRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRootView.swift; sourceTree = "<group>"; };
 		01342088294DD28500C91D24 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -139,10 +153,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010EDCC0295636030078FB0F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				010EDCC12956360B0078FB0F /* ListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		010EDCC32956365E0078FB0F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				010EDCC4295636690078FB0F /* MovieViewModelProtocol.swift */,
+				010EDCC6295636780078FB0F /* AddToListViewModelProtocol.swift */,
+				010EDCC8295636920078FB0F /* FetchedDataViewModelProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		010EDCCC295636FA0078FB0F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				01FA85E82950CABD00EDE485 /* NetworkingServices.swift */,
+				0119015F29523321003D75D8 /* NetworkingViewModel.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		010EDCCD295637040078FB0F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				010EDCCE2956370B0078FB0F /* MementoStateSaver.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		010FA0B529508A6A00FA3A2F /* List */ = {
 			isa = PBXGroup;
 			children = (
 				010FA0B629508A6F00FA3A2F /* Views */,
+				010EDCC0295636030078FB0F /* ViewModel */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -185,8 +235,9 @@
 				01AF3EE1294F234E00AFAEF3 /* Details */,
 				0134208A294DDA2E00C91D24 /* TabBar */,
 				0114B2B5294D02F100693CDA /* Base */,
-				0114B2BD294D054500693CDA /* Resources */,
+				010EDCC32956365E0078FB0F /* Protocols */,
 				0114B2BA294D047400693CDA /* Extensions */,
+				0114B2BD294D054500693CDA /* Resources */,
 				0114B2B4294D028500693CDA /* Application */,
 				0114B2B3294D023D00693CDA /* SupportingFiles */,
 			);
@@ -230,6 +281,8 @@
 				0114B2BB294D048C00693CDA /* UIColor+ HexString.swift */,
 				0114B2C7294D0AD600693CDA /* UITextField+ Padding.swift */,
 				01937A49294E07860041B6BA /* UIBarButtonItem+.swift */,
+				010EDCBE295635290078FB0F /* String+ FormatDate.swift */,
+				010EDCCA295636B40078FB0F /* ViewModelObservable+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,7 +355,7 @@
 		0119016429523419003D75D8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0119016529523428003D75D8 /* MovieViewModel.swift */,
+				0119016529523428003D75D8 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -343,8 +396,8 @@
 		0134208F294DDDDB00C91D24 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0119016429523419003D75D8 /* ViewModel */,
 				01342090294DDDE000C91D24 /* Views */,
+				0119016429523419003D75D8 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -473,8 +526,8 @@
 		01AF3EE1294F234E00AFAEF3 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				0119016729523446003D75D8 /* ViewModel */,
 				01AF3EE2294F235600AFAEF3 /* Views */,
+				0119016729523446003D75D8 /* ViewModel */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -493,8 +546,8 @@
 		01FA85E72950C6FE00EDE485 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				01FA85E82950CABD00EDE485 /* NetworkingServices.swift */,
-				0119015F29523321003D75D8 /* NetworkingViewModel.swift */,
+				010EDCCC295636FA0078FB0F /* Networking */,
+				010EDCCD295637040078FB0F /* Storage */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -598,6 +651,7 @@
 				01AF3EE8294F361F00AFAEF3 /* DetailsBaseLabel.swift in Sources */,
 				0114B2B9294D034900693CDA /* BaseViewController.swift in Sources */,
 				0139F6D62950A7AA009D35C7 /* SearchRootView.swift in Sources */,
+				010EDCC9295636920078FB0F /* FetchedDataViewModelProtocol.swift in Sources */,
 				010FA0B829508A7A00FA3A2F /* ListRootView.swift in Sources */,
 				0134208E294DDDBD00C91D24 /* BaseNavigationController.swift in Sources */,
 				0114B2BC294D048C00693CDA /* UIColor+ HexString.swift in Sources */,
@@ -605,10 +659,11 @@
 				0114B2BF294D054C00693CDA /* Resources.swift in Sources */,
 				0134208C294DDA3900C91D24 /* TabBarController.swift in Sources */,
 				0139F6DE2950B201009D35C7 /* SearchCollectionViewSection.swift in Sources */,
+				010EDCC22956360B0078FB0F /* ListViewModel.swift in Sources */,
 				0114B2A0294D021600693CDA /* AppDelegate.swift in Sources */,
 				0119016929523455003D75D8 /* DetailViewModel.swift in Sources */,
 				0114B2D7294D1DAE00693CDA /* SignUpViewController.swift in Sources */,
-				0119016629523428003D75D8 /* MovieViewModel.swift in Sources */,
+				0119016629523428003D75D8 /* HomeViewModel.swift in Sources */,
 				0119016329523381003D75D8 /* MovieNetworkingDataModel.swift in Sources */,
 				01342087294DD24F00C91D24 /* StartRootView.swift in Sources */,
 				0119016029523321003D75D8 /* NetworkingViewModel.swift in Sources */,
@@ -619,13 +674,18 @@
 				0114B2C4294D070B00693CDA /* AuthBaseView.swift in Sources */,
 				01937A59294E16EF0041B6BA /* TrendingMovieCompositionalLayout.swift in Sources */,
 				0139F6E12950B216009D35C7 /* SearchCollectionViewCell.swift in Sources */,
+				010EDCBF295635290078FB0F /* String+ FormatDate.swift in Sources */,
 				01937A57294E16DF0041B6BA /* UpcomingMovieCompositionalLayout.swift in Sources */,
 				01FA85E92950CABD00EDE485 /* NetworkingServices.swift in Sources */,
+				010EDCCB295636B40078FB0F /* ViewModelObservable+.swift in Sources */,
 				0114B2C8294D0AD600693CDA /* UITextField+ Padding.swift in Sources */,
 				01937A4F294E10400041B6BA /* MovieModel.swift in Sources */,
 				014D674F29509842004FA7A0 /* SavedCollectionViewCell.swift in Sources */,
+				010EDCC5295636690078FB0F /* MovieViewModelProtocol.swift in Sources */,
+				010EDCC7295636780078FB0F /* AddToListViewModelProtocol.swift in Sources */,
 				01937A4A294E07860041B6BA /* UIBarButtonItem+.swift in Sources */,
 				0114B2B7294D02F800693CDA /* BaseView.swift in Sources */,
+				010EDCCF2956370B0078FB0F /* MementoStateSaver.swift in Sources */,
 				0166504E294E657200078840 /* BaseCollectionViewMovieCell.swift in Sources */,
 				010FA0BA29508AA700FA3A2F /* ListViewController.swift in Sources */,
 				01937A54294E16B40041B6BA /* CompositionalLayoutFactory.swift in Sources */,

@@ -17,7 +17,7 @@ class BaseNavigationController: UINavigationController {
     private func configureAppearance() {
         
         view.backgroundColor = R.Colors.mainBackground
-        navigationBar.isTranslucent = false
+        navigationBar.isTranslucent = true
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = R.Colors.mainBackground

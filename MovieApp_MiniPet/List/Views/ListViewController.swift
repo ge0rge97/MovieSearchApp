@@ -10,13 +10,7 @@ import UIKit
 final class ListViewController: BaseViewController<ListRootView> {
     
     private var dataSource: UICollectionViewDiffableDataSource<ListCollectionViewSection, AnyHashable>!
-    
-    var savedMovieData: [MovieModel] = [
-        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 2),
-        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 3),
-        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 2),
-        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 3),
-    ]
+    private var listViewModel: ListViewModelProtocol = ListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +18,11 @@ final class ListViewController: BaseViewController<ListRootView> {
         setupNavigationBar()
         setupCollectionView()
         setupCollectionViewDataSource()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         reloadData()
     }
 }
@@ -54,9 +53,8 @@ private extension ListViewController {
                 guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: SavedCollectionViewCell.reuseId,
                                                                                    for: indexPath) as? SavedCollectionViewCell
                 else { return UICollectionViewCell() }
-                
-                
-                
+                cell.cellViewModel = self?.listViewModel.cellViewModel(forIndexPath: indexPath)
+                cell.removedButton.addTarget(self, action: #selector(self?.removeButtonAction), for: .touchUpInside)
                 return cell
             }
         })
@@ -64,7 +62,7 @@ private extension ListViewController {
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<ListCollectionViewSection, AnyHashable>()
         snapshot.appendSections([.saved])
-        snapshot.appendItems(savedMovieData, toSection: .saved)
+        snapshot.appendItems(listViewModel.movieData, toSection: .saved)
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
@@ -72,6 +70,21 @@ private extension ListViewController {
 extension ListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        
+        let detailVC = DetailsViewController()
+        listViewModel.selectRow(atIndexPath: indexPath)
+        detailVC.viewModel = listViewModel.viewModelForSelectedRow()
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+//MARK: - Actions
+@objc
+private extension ListViewController {
+    
+    func removeButtonAction(_ sender: UIButton) {
+        guard let indexPath = self.getCurrentIndexPath(withSender: sender,
+                                                       andCollectionView: mainView.collectionView) else { return }
+        listViewModel.removedSelectedMovieFromList(forIndexPath: indexPath)
+        self.reloadData()
     }
 }
