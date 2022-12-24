@@ -10,13 +10,7 @@ import UIKit
 final class SearchViewController: BaseViewController<SearchRootView> {
     
     private var dataSource: UICollectionViewDiffableDataSource<SearchCollectionViewSection, AnyHashable>!
-    
-    var savedMovieData: [MovieModel] = [
-        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 2),
-        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 3),
-        MovieModel(movieId: 1, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 2),
-        MovieModel(movieId: 2, movieTitle: "", movieImagePath: "", movieOverview: "", movieGenres: "", releaseDate: "", averageRating: 3),
-    ]
+    private var searchViewModel: SearchMovieViewModelProtocol = SearchMovieViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +33,17 @@ private extension SearchViewController {
                                          forCellWithReuseIdentifier: SearchCollectionViewCell.reuseId)
         mainView.collectionView.delegate = self
     }
+    func bindViewModel() {
+        searchViewModel.isLoading.bind { [weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.mainView.indicatorView.startAnimating()
+                } else {
+                    self?.mainView.indicatorView.stopAnimating()
+                }
+            }
+        }
+    }
 }
 //MARK: - Setup CollectionsView with DataSource
 private extension SearchViewController {
@@ -55,9 +60,7 @@ private extension SearchViewController {
                 guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseId,
                                                                                    for: indexPath) as? SearchCollectionViewCell
                 else { return UICollectionViewCell() }
-                
-                
-                
+                cell.cellViewModel = self?.searchViewModel.cellViewModel(forIndexPath: indexPath)
                 return cell
             }
         })
@@ -65,7 +68,7 @@ private extension SearchViewController {
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<SearchCollectionViewSection, AnyHashable>()
         snapshot.appendSections([.search])
-        snapshot.appendItems(savedMovieData, toSection: .search)
+        snapshot.appendItems(searchViewModel.movieData, toSection: .search)
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
@@ -73,13 +76,23 @@ private extension SearchViewController {
 extension SearchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        let detailVC = DetailsViewController()
+        
+        searchViewModel.selectRow(atIndexPath: indexPath)
+        detailVC.viewModel = searchViewModel.viewModelForSelectedRow()
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 //MARK: - SearchBar Delegate
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        searchViewModel.getFetchedData(withSearchTerm: searchText)
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            self.reloadData()
+            
+        })
+        self.bindViewModel()
     }
 }

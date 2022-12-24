@@ -12,15 +12,28 @@ final class SearchRootView: BaseView {
     let searchBar = MovieSearchBar()
     lazy var collectionView = BaseCollectionView(withLayout: createCompositionalLayout())
     let compositionalLayout = SearchMovieCompositionalLayout(isHeaderNeeded: false)
+    
+    let indicatorView = UIActivityIndicatorView()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        NSLayoutConstraint.activate([
+            indicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
 }
 //MARK: - Required Methods
 extension SearchRootView {
     
     override func setupViews() {
-        [collectionView].forEach{ addSubview($0) }
+        [collectionView, indicatorView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
+        [indicatorView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+        
+        indicatorView.color = R.Colors.baseButtonColor
     }
 }
 //MARK: - CollectionView CompositionalLayout

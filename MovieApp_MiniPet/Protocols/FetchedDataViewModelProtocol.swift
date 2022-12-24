@@ -11,8 +11,6 @@ protocol FetchedDataViewModelProtocol {
     
     var fetchedMovieData: [Result]? { get }
     var isLoading: ViewModelObservable<Bool> { get }
-    
-    func getFetchedData(withCategory category: PathMovieCategory)
 }
 
 extension FetchedDataViewModelProtocol {
@@ -49,7 +47,6 @@ extension FetchedDataViewModelProtocol {
             default: genre = ""
                 
             }
-            
             array.append(genre)
             
             if array.count >= 3 {

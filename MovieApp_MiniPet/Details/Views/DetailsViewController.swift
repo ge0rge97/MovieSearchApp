@@ -34,7 +34,7 @@ private extension DetailsViewController {
         mainView.releasedMovieYearLabel.text = viewModel.date
         mainView.detailsMovieOverviewLabel.text = viewModel.overview
         mainView.genresLabel.text = viewModel.genre
-        DetailsRootView.rating = viewModel.rating
+        mainView.rating = viewModel.rating
         let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
         mainView.detailsMovieImage.sd_setImage(with: url)
     }

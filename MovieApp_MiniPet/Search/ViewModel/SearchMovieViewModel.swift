@@ -1,18 +1,18 @@
 //
-//  HomeViewModel.swift
+//  SearchMovieViewModel.swift
 //  MovieApp_MiniPet
 //
-//  Created by Georgiy Groshev on 20.12.2022.
+//  Created by Georgiy Groshev on 24.12.2022.
 //
 
 import Foundation
 
-protocol HomeViewModelProtocol: MovieViewModelProtocol, AddToListViewModelProtocol, FetchedDataViewModelProtocol {
-    
-    func getFetchedData(withCategory category: PathMovieCategory)
+protocol SearchMovieViewModelProtocol: MovieViewModelProtocol, FetchedDataViewModelProtocol {
+
+    func getFetchedData(withSearchTerm searchTerm: String)
 }
 
-class HomeViewModel: HomeViewModelProtocol {
+class SearchMovieViewModel: SearchMovieViewModelProtocol {
     
     private var selectedIndexPath: IndexPath?
     private let networking = NetworkingViewModel()
@@ -34,19 +34,19 @@ class HomeViewModel: HomeViewModelProtocol {
         return array
     }
     
-    func getFetchedData(withCategory category: PathMovieCategory) {
+    func getFetchedData(withSearchTerm searchTerm: String) {
         if isLoading.value {
             return
         }
         isLoading.value = true
-        networking.fetchMovieData(withPath: category) { result in
+        networking.fetchMovieDataWithSearch(withSearchTerm: searchTerm) { result in
             self.isLoading.value = false
             self.fetchedMovieData = result
         }
     }
 }
 //MARK: - CellViewModel
-extension HomeViewModel {
+extension SearchMovieViewModel {
     
     func cellViewModel(forIndexPath indexPath: IndexPath) -> DetailMovieViewModelProtocol? {
         let item = movieData[indexPath.item]
@@ -54,7 +54,7 @@ extension HomeViewModel {
     }
 }
 //MARK: - Selected Items for DetailVMProtocol CellViewModel
-extension HomeViewModel {
+extension SearchMovieViewModel {
 
     func selectRow(atIndexPath indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
@@ -63,14 +63,5 @@ extension HomeViewModel {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
         let item = movieData[selectedIndexPath.item]
         return DetailViewModel(item: item)
-    }
-}
-//MARK: - Add To List
-extension HomeViewModel {
-    
-    func addSelectedMovieToList(atIndexPath indexPath: IndexPath) {
-        let item = movieData[indexPath.item]
-        let listVM = ListViewModel()
-        listVM.addItem(item)
     }
 }

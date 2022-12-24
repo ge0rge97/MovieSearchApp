@@ -22,6 +22,17 @@ class NetworkingViewModel {
             completion(decode?.results)
         }
     }
+    func fetchMovieDataWithSearch(withSearchTerm searchTerm: String, completion: @escaping ([Result]?) -> Void) {
+        
+        networkServices.getSearchMovieRequest(withSearchTerm: searchTerm) { data, error in
+            if let error = error {
+                print("There are some requesting data error:", error.localizedDescription)
+                completion(nil)
+            }
+            let decode = self.decodeJSON(withType: MovieNetworkingDataModel.self, fromData: data)
+            completion(decode?.results)
+        }
+    }
 }
 //MARK: - Decode JSON
 extension NetworkingViewModel {

@@ -18,10 +18,10 @@ final class DetailsRootView: BaseView {
     
     let watchNowButton = UIButton(type: .system)
     let addToListButton = DetailsRootView.createAddToListButton()
-    let averageRatingButton = DetailsRootView.createAverageRatingButton()
+    lazy var averageRatingButton = createAverageRatingButton()
     let sharedButton = DetailsRootView.createSharedButton()
     
-    static var rating: String?
+    var rating: String?
     
     private let helpersStackView = UIStackView()
     private let detailsStackView = UIStackView()
@@ -93,8 +93,8 @@ private extension DetailsRootView {
         return DetailsHelpersButton(title: "List",
                                     buttonIcon: UIImage(systemName: "bookmark"))
     }
-    static func createAverageRatingButton() -> UIButton {
-        return DetailsHelpersButton(title: DetailsRootView.rating ?? "",
+    func createAverageRatingButton() -> UIButton {
+        return DetailsHelpersButton(title: rating ?? "",
                                     buttonIcon: UIImage(systemName: "star"))
     }
     static func createSharedButton() -> UIButton {

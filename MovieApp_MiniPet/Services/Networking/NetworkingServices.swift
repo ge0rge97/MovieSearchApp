@@ -49,6 +49,38 @@ class NetworkingServices {
         parameters["api_key"] = "7356cf7274566fcc26e46b37a260f2c6"
         return parameters
     }
+    
+    //MARK: - Networking Search Movie
+    
+    //https://api.themoviedb.org/3/search/movie?api_key=7356cf7274566fcc26e46b37a260f2c6&query=STRING
+    
+    //https://api.themoviedb.org/3/movie/top_rated?api_key=7356cf7274566fcc26e46b37a260f2c6
+    
+    
+    func getSearchMovieRequest(withSearchTerm searchTerm: String, completion: @escaping (Data?, Error?) -> Void) {
+        
+        let parameters = self.prepareSearchMovieParameters(withSearchTerm: searchTerm)
+        let url = self.getSearchMovieApiUrl(withParameters: parameters)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let task = self.createDataTask(fromRequest: request,
+                                       completion: completion)
+        task.resume()
+    }
+    private func getSearchMovieApiUrl(withParameters parameters: [String: String])-> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.themoviedb.org"
+        components.path = "/3/search/movie"
+        components.queryItems = parameters.map { URLQueryItem(name: $0, value: $1)}
+        return components.url!
+    }
+    private func prepareSearchMovieParameters(withSearchTerm searchTerm: String)-> [String: String] {
+        var parameters = [String: String]()
+        parameters["api_key"] = "7356cf7274566fcc26e46b37a260f2c6"
+        parameters["query"] = searchTerm
+        return parameters
+    }
 }
 //MARK: - Create DataTask
 extension NetworkingServices {
