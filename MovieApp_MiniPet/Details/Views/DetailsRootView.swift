@@ -17,11 +17,9 @@ final class DetailsRootView: BaseView {
     let detailsMovieOverviewLabel = DetailsRootView.createDetailsMovieOverviewLabel()
     
     let watchNowButton = UIButton(type: .system)
-    let addToListButton = DetailsRootView.createAddToListButton()
-    lazy var averageRatingButton = createAverageRatingButton()
-    let sharedButton = DetailsRootView.createSharedButton()
-    
-    var rating: String?
+    private let addToListView = DetailsRootView.createAddToListView()
+    private let averageRatingView = DetailsRootView.createAverageRatingView()
+    private let sharedView = DetailsRootView.createSharedView()
     
     private let helpersStackView = UIStackView()
     private let detailsStackView = UIStackView()
@@ -43,12 +41,28 @@ final class DetailsRootView: BaseView {
             helpersStackView.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
+    
+    func addAddToListViewRecognizer(withTarget target: Any, andAction action: Selector) {
+        
+        let addToListRecognizer = UITapGestureRecognizer(target: target, action: action)
+        addToListView.isUserInteractionEnabled = true
+        addToListView.addGestureRecognizer(addToListRecognizer)
+    }
+    func addSharedViewRecognizer(withTarget target: Any, andAction action: Selector) {
+        
+        let addToListRecognizer = UITapGestureRecognizer(target: target, action: action)
+        sharedView.isUserInteractionEnabled = true
+        sharedView.addGestureRecognizer(addToListRecognizer)
+    }
+    func addRating(withRating rating: String) {
+        averageRatingView.titleLabel.text = rating
+    }
 }
 //MARK: - Required Methods
 extension DetailsRootView {
     
     override func setupViews() {
-        [addToListButton, averageRatingButton, sharedButton].forEach{ helpersStackView.addArrangedSubview($0) }
+        [addToListView, averageRatingView, sharedView].forEach{ helpersStackView.addArrangedSubview($0) }
         [detailsMoveTitle, releasedMovieYearLabel, genresLabel, watchNowButton, detailsMovieOverviewLabel, helpersStackView].forEach{ detailsStackView.addArrangedSubview($0) }
         [detailsMovieImage, detailsStackView].forEach{ addSubview($0) }
     }
@@ -72,33 +86,33 @@ extension DetailsRootView {
 //MARK: - Private Create Methods
 private extension DetailsRootView {
     
-    static func createDetailsMoveTitleLabel() -> UILabel {
+    static func createDetailsMoveTitleLabel() -> DetailsBaseLabel {
         return DetailsBaseLabel(textColor: R.Colors.mainWhite,
                                 font: R.Fonts.boldFont(withSize: 18),
                                 numberOfLines: 0)
     }
-    static func createReleasedMovieYearLabel() -> UILabel {
+    static func createReleasedMovieYearLabel() -> DetailsBaseLabel {
         return DetailsBaseLabel(textColor: UIColor(hexString: "8C8C8C"),
                                 font: R.Fonts.regularFont(withSize: 16))
     }
-    static func createGenresLabel() -> UILabel {
+    static func createGenresLabel() -> DetailsBaseLabel {
         return DetailsBaseLabel(textColor: R.Colors.mainWhite,
                                 font: R.Fonts.regularFont(withSize: 16))
     }
-    static func createDetailsMovieOverviewLabel() -> UILabel {
+    static func createDetailsMovieOverviewLabel() -> DetailsBaseLabel {
         return DetailsBaseLabel(textColor: R.Colors.mainWhite,
                                 font: R.Fonts.regularFont(withSize: 14), numberOfLines: 0)
     }
-    static func createAddToListButton() -> UIButton {
-        return DetailsHelpersButton(title: "List",
-                                    buttonIcon: UIImage(systemName: "bookmark"))
+    static func createAddToListView() -> DetailsHelpersView {
+        return DetailsHelpersView(title: "List",
+                                    viewIcon: UIImage(systemName: "bookmark"))
     }
-    func createAverageRatingButton() -> UIButton {
-        return DetailsHelpersButton(title: rating ?? "",
-                                    buttonIcon: UIImage(systemName: "star"))
+    static func createAverageRatingView() -> DetailsHelpersView {
+        return DetailsHelpersView(title: "",
+                                  viewIcon: UIImage(systemName: "star"))
     }
-    static func createSharedButton() -> UIButton {
-        return DetailsHelpersButton(title: "Shared",
-                                    buttonIcon: UIImage(systemName: "arrowshape.turn.up.forward"))
+    static func createSharedView() -> DetailsHelpersView {
+        return DetailsHelpersView(title: "Shared",
+                                  viewIcon: UIImage(systemName: "arrowshape.turn.up.forward"))
     }
 }

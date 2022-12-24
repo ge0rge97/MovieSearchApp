@@ -24,8 +24,8 @@ private extension DetailsViewController {
     
     func setupButtonActions() {
         mainView.watchNowButton.addTarget(self, action: #selector(watchNowButtonAction), for: .touchUpInside)
-        mainView.addToListButton.addTarget(self, action: #selector(addToListButtonAction), for: .touchUpInside)
-        mainView.sharedButton.addTarget(self, action: #selector(sharedButtonAction), for: .touchUpInside)
+        mainView.addAddToListViewRecognizer(withTarget: self, andAction: #selector(self.addToListViewRecognizer(_ :)))
+        mainView.addSharedViewRecognizer(withTarget: self, andAction: #selector(self.sharedViewRecognizer(_ :)))
     }
     func setupViewModel() {
         guard let viewModel = viewModel else { return }
@@ -34,7 +34,7 @@ private extension DetailsViewController {
         mainView.releasedMovieYearLabel.text = viewModel.date
         mainView.detailsMovieOverviewLabel.text = viewModel.overview
         mainView.genresLabel.text = viewModel.genre
-        mainView.rating = viewModel.rating
+        mainView.addRating(withRating: viewModel.rating)
         let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
         mainView.detailsMovieImage.sd_setImage(with: url)
     }
@@ -46,10 +46,10 @@ private extension DetailsViewController {
     func watchNowButtonAction() {
         print(#function)
     }
-    func addToListButtonAction(_ sender: UIButton) {
+    func addToListViewRecognizer(_ sender: UITapGestureRecognizer) {
         viewModel?.addSelectedMovieToList()
     }
-    func sharedButtonAction() {
+    func sharedViewRecognizer(_ sender: UITapGestureRecognizer) {
         print(#function)
     }
 }
