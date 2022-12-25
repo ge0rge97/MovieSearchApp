@@ -13,6 +13,7 @@ final class HomeViewController: BaseViewController<HomeRootView> {
     
     private var trendingViewModel: HomeViewModelProtocol = HomeViewModel()
     private var upcomingViewModel: HomeViewModelProtocol = HomeViewModel()
+    private var internetConnectionViewModel: InternetConnectionViewModelProtocol = InternetConnectionViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +21,14 @@ final class HomeViewController: BaseViewController<HomeRootView> {
         setupNavigationBar()
         setupCollectionView()
         setupCollectionViewDataSource()
+        bindMovieViewModel()
+        bindInternetConnectionViewModel()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.trendingViewModel.getFetchedData(withCategory: .trending)
         self.upcomingViewModel.getFetchedData(withCategory: .upcoming)
-        bindViewModel()
     }
 }
 //MARK: - Private Methods
@@ -50,8 +52,7 @@ private extension HomeViewController {
                                          withReuseIdentifier: HomeCollectionViewHeaderCell.reuseId)
         mainView.collectionView.delegate = self
     }
-    func bindViewModel() {
-        
+    func bindMovieViewModel() {
         trendingViewModel.isLoading.bind { [weak self] isLoading in
             DispatchQueue.main.async {
                 if isLoading {
@@ -79,29 +80,29 @@ private extension HomeViewController {
     
     func setupCollectionViewDataSource() {
         self.dataSource = UICollectionViewDiffableDataSource<HomeCollectionViewSection, AnyHashable>(collectionView: mainView.collectionView,
-                                                                                   cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
+                                                                                                     cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
             
             guard let section = HomeCollectionViewSection(rawValue: indexPath.section)
-                else { return UICollectionViewCell() }
-                  
+            else { return UICollectionViewCell() }
+            
             switch section {
             case .upcomingMovies:
                 guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingMovieCollectionViewCell.reuseId,
                                                                                    for: indexPath) as? UpcomingMovieCollectionViewCell
-                    else { return UICollectionViewCell() }
+                else { return UICollectionViewCell() }
                 cell.cellViewModel = self?.upcomingViewModel.cellViewModel(forIndexPath: indexPath)
                 return cell
             case .trendingMovies:
                 guard let cell = self?.mainView.collectionView.dequeueReusableCell(withReuseIdentifier: TrendingMovieCollectionViewCell.reuseId,
                                                                                    for: indexPath) as? TrendingMovieCollectionViewCell
-                    else { return UICollectionViewCell() }
+                else { return UICollectionViewCell() }
                 cell.cellViewModel = self?.trendingViewModel.cellViewModel(forIndexPath: indexPath)
                 cell.savedButton.addTarget(self, action: #selector(self?.savedButtonTrendingCellAction), for: .touchUpInside)
                 return cell
             }
         })
         self.dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-
+            
             guard let section = HomeCollectionViewSection(rawValue: indexPath.section),
                   let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                       withReuseIdentifier: HomeCollectionViewHeaderCell.reuseId,
@@ -152,9 +153,22 @@ private extension HomeViewController {
         print(#function)
     }
     func savedButtonTrendingCellAction(_ sender: UIButton) {
-        
         guard let indexPath = self.getCurrentIndexPath(withSender: sender,
                                                        andCollectionView: mainView.collectionView) else { return }
         trendingViewModel.addSelectedMovieToList(atIndexPath: indexPath)
+    }
+}
+//MARK: - Network Monitoring
+private extension HomeViewController {
+    func bindInternetConnectionViewModel() {
+        internetConnectionViewModel.isInternetConnection.bind { [weak self] isConnected in
+            if isConnected {
+                self?.mainView.checkInternetConnection(isConnection: true)
+            } else {
+                self?.mainView.checkInternetConnection(isConnection: false)
+                self?.navigationController?.navigationBar.isHidden = true
+                self?.tabBarController?.tabBar.isHidden = true
+            }
+        }
     }
 }

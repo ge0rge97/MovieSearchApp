@@ -15,7 +15,7 @@ protocol SearchMovieViewModelProtocol: MovieViewModelProtocol, FetchedDataViewMo
 class SearchMovieViewModel: SearchMovieViewModelProtocol {
     
     private var selectedIndexPath: IndexPath?
-    private let networking = NetworkingViewModel()
+    private let networking = NetworkViewModel()
     
     var fetchedMovieData: [Result]?
     var isLoading: ViewModelObservable<Bool> = ViewModelObservable(false)

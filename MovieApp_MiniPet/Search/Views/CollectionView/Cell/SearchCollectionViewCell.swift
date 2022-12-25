@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class SearchCollectionViewCell: BaseCollectionViewMovieCell {
     
@@ -23,7 +24,7 @@ final class SearchCollectionViewCell: BaseCollectionViewMovieCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .purple
+        self.backgroundColor = R.Colors.separator.withAlphaComponent(0.5)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -15,9 +15,10 @@ protocol HomeViewModelProtocol: MovieViewModelProtocol, AddToListViewModelProtoc
 class HomeViewModel: HomeViewModelProtocol {
     
     private var selectedIndexPath: IndexPath?
-    private let networking = NetworkingViewModel()
+    private let networking = NetworkViewModel()
     
     var fetchedMovieData: [Result]?
+    
     var isLoading: ViewModelObservable<Bool> = ViewModelObservable(false)
     
     var movieData: [MovieModel] {

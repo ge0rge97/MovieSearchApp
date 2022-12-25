@@ -35,7 +35,7 @@
 		0114B2D7294D1DAE00693CDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */; };
 		0114B2D9294D1DC100693CDA /* SignUpRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D8294D1DC100693CDA /* SignUpRootView.swift */; };
 		011865DB2952590E00DBCD14 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 011865DA2952590E00DBCD14 /* SDWebImage */; };
-		0119016029523321003D75D8 /* NetworkingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119015F29523321003D75D8 /* NetworkingViewModel.swift */; };
+		0119016029523321003D75D8 /* NetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119015F29523321003D75D8 /* NetworkViewModel.swift */; };
 		0119016329523381003D75D8 /* MovieNetworkingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119016229523381003D75D8 /* MovieNetworkingDataModel.swift */; };
 		0119016629523428003D75D8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119016529523428003D75D8 /* HomeViewModel.swift */; };
 		0119016929523455003D75D8 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119016829523455003D75D8 /* DetailViewModel.swift */; };
@@ -71,7 +71,10 @@
 		01AF3EE6294F239200AFAEF3 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF3EE5294F239200AFAEF3 /* DetailsViewController.swift */; };
 		01AF3EE8294F361F00AFAEF3 /* DetailsBaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF3EE7294F361F00AFAEF3 /* DetailsBaseLabel.swift */; };
 		01AF3EEA294F363C00AFAEF3 /* DetailsHelpersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF3EE9294F363C00AFAEF3 /* DetailsHelpersView.swift */; };
-		01FA85E92950CABD00EDE485 /* NetworkingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA85E82950CABD00EDE485 /* NetworkingServices.swift */; };
+		01F8482B2958A2FD0038717E /* InternetConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8482A2958A2FD0038717E /* InternetConnectionViewModel.swift */; };
+		01F8482D2958A3200038717E /* NetworkiMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8482C2958A3200038717E /* NetworkiMonitor.swift */; };
+		01F8482F2958A3390038717E /* NoInternetConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8482E2958A3390038717E /* NoInternetConnectionView.swift */; };
+		01FA85E92950CABD00EDE485 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA85E82950CABD00EDE485 /* NetworkServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,7 +107,7 @@
 		0114B2D2294D1C4700693CDA /* LoginRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRootView.swift; sourceTree = "<group>"; };
 		0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0114B2D8294D1DC100693CDA /* SignUpRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRootView.swift; sourceTree = "<group>"; };
-		0119015F29523321003D75D8 /* NetworkingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingViewModel.swift; sourceTree = "<group>"; };
+		0119015F29523321003D75D8 /* NetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewModel.swift; sourceTree = "<group>"; };
 		0119016229523381003D75D8 /* MovieNetworkingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNetworkingDataModel.swift; sourceTree = "<group>"; };
 		0119016529523428003D75D8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0119016829523455003D75D8 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -140,7 +143,10 @@
 		01AF3EE5294F239200AFAEF3 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		01AF3EE7294F361F00AFAEF3 /* DetailsBaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBaseLabel.swift; sourceTree = "<group>"; };
 		01AF3EE9294F363C00AFAEF3 /* DetailsHelpersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHelpersView.swift; sourceTree = "<group>"; };
-		01FA85E82950CABD00EDE485 /* NetworkingServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServices.swift; sourceTree = "<group>"; };
+		01F8482A2958A2FD0038717E /* InternetConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionViewModel.swift; sourceTree = "<group>"; };
+		01F8482C2958A3200038717E /* NetworkiMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkiMonitor.swift; sourceTree = "<group>"; };
+		01F8482E2958A3390038717E /* NoInternetConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetConnectionView.swift; sourceTree = "<group>"; };
+		01FA85E82950CABD00EDE485 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,8 +182,9 @@
 		010EDCCC295636FA0078FB0F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				01FA85E82950CABD00EDE485 /* NetworkingServices.swift */,
-				0119015F29523321003D75D8 /* NetworkingViewModel.swift */,
+				01FA85E82950CABD00EDE485 /* NetworkServices.swift */,
+				0119015F29523321003D75D8 /* NetworkViewModel.swift */,
+				01F8482C2958A3200038717E /* NetworkiMonitor.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -358,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				0119016529523428003D75D8 /* HomeViewModel.swift */,
+				01F8482A2958A2FD0038717E /* InternetConnectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -409,6 +417,7 @@
 			children = (
 				01342091294DDDEC00C91D24 /* HomeRootView.swift */,
 				01342093294DDE1000C91D24 /* HomeViewController.swift */,
+				01F8482E2958A3390038717E /* NoInternetConnectionView.swift */,
 				01937A50294E16920041B6BA /* CollectionView */,
 			);
 			path = Views;
@@ -640,6 +649,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0114B2D3294D1C4700693CDA /* LoginRootView.swift in Sources */,
+				01F8482D2958A3200038717E /* NetworkiMonitor.swift in Sources */,
+				01F8482B2958A2FD0038717E /* InternetConnectionViewModel.swift in Sources */,
 				0114B2D1294D199100693CDA /* OrView.swift in Sources */,
 				01665053294E65B400078840 /* TrendingMovieCollectionViewCell.swift in Sources */,
 				01665051294E659D00078840 /* UpcomingMovieCollectionViewCell.swift in Sources */,
@@ -678,7 +689,7 @@
 				0119016629523428003D75D8 /* HomeViewModel.swift in Sources */,
 				0119016329523381003D75D8 /* MovieNetworkingDataModel.swift in Sources */,
 				01342087294DD24F00C91D24 /* StartRootView.swift in Sources */,
-				0119016029523321003D75D8 /* NetworkingViewModel.swift in Sources */,
+				0119016029523321003D75D8 /* NetworkViewModel.swift in Sources */,
 				0139F6D92950A7EE009D35C7 /* SearchViewController.swift in Sources */,
 				01AF3EE4294F236400AFAEF3 /* DetailsRootView.swift in Sources */,
 				0114B2CD294D0F4600693CDA /* AuthButton.swift in Sources */,
@@ -688,7 +699,7 @@
 				0139F6E12950B216009D35C7 /* SearchCollectionViewCell.swift in Sources */,
 				010EDCBF295635290078FB0F /* String+ FormatDate.swift in Sources */,
 				01937A57294E16DF0041B6BA /* UpcomingMovieCompositionalLayout.swift in Sources */,
-				01FA85E92950CABD00EDE485 /* NetworkingServices.swift in Sources */,
+				01FA85E92950CABD00EDE485 /* NetworkServices.swift in Sources */,
 				010EDCCB295636B40078FB0F /* ViewModelObservable+.swift in Sources */,
 				0114B2C8294D0AD600693CDA /* UITextField+ Padding.swift in Sources */,
 				01937A4F294E10400041B6BA /* MovieModel.swift in Sources */,
@@ -698,6 +709,7 @@
 				01937A4A294E07860041B6BA /* UIBarButtonItem+.swift in Sources */,
 				0114B2B7294D02F800693CDA /* BaseView.swift in Sources */,
 				010EDCCF2956370B0078FB0F /* MementoStateSaver.swift in Sources */,
+				01F8482F2958A3390038717E /* NoInternetConnectionView.swift in Sources */,
 				0166504E294E657200078840 /* BaseCollectionViewMovieCell.swift in Sources */,
 				010FA0BA29508AA700FA3A2F /* ListViewController.swift in Sources */,
 				01937A54294E16B40041B6BA /* CompositionalLayoutFactory.swift in Sources */,

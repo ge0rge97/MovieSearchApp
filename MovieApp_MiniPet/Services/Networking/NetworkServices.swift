@@ -1,5 +1,5 @@
 //
-//  NetworkingServices.swift
+//  NetworkServices.swift
 //  MovieApp_MiniPet
 //
 //  Created by Georgiy Groshev on 19.12.2022.
@@ -7,23 +7,12 @@
 
 import Foundation
 
-//https://api.themoviedb.org/3/movie/upcoming?api_key=7356cf7274566fcc26e46b37a260f2c6
-
-//https://api.themoviedb.org/3/movie/upcoming?api_key=<<api_key>>
-
-//https://api.themoviedb.org/3/movie/top_rated?api_key=7356cf7274566fcc26e46b37a260f2c6
-//https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>
-
-
-//https://api.themoviedb.org/3/search/movie?api_key=7356cf7274566fcc26e46b37a260f2c6&query=STRING
-
 enum PathMovieCategory: String {
     case upcoming = "upcoming"
     case trending = "popular"
 }
 
-class NetworkingServices {
-    
+class NetworkServices {
     //MARK: - Networking Movie
     func getMovieRequest(withPath path: PathMovieCategory, completion: @escaping (Data?, Error?) -> Void) {
         
@@ -49,14 +38,7 @@ class NetworkingServices {
         parameters["api_key"] = "7356cf7274566fcc26e46b37a260f2c6"
         return parameters
     }
-    
     //MARK: - Networking Search Movie
-    
-    //https://api.themoviedb.org/3/search/movie?api_key=7356cf7274566fcc26e46b37a260f2c6&query=STRING
-    
-    //https://api.themoviedb.org/3/movie/top_rated?api_key=7356cf7274566fcc26e46b37a260f2c6
-    
-    
     func getSearchMovieRequest(withSearchTerm searchTerm: String, completion: @escaping (Data?, Error?) -> Void) {
         
         let parameters = self.prepareSearchMovieParameters(withSearchTerm: searchTerm)
@@ -83,7 +65,7 @@ class NetworkingServices {
     }
 }
 //MARK: - Create DataTask
-extension NetworkingServices {
+extension NetworkServices {
     
     private func createDataTask(fromRequest request: URLRequest, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask {
         return URLSession.shared.dataTask(with: request) { data, _, error in

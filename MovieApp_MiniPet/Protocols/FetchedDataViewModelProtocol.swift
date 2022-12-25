@@ -24,7 +24,6 @@ extension FetchedDataViewModelProtocol {
             var genre: String = ""
             
             switch id {
-                
             case 28: genre = "Action"
             case 12: genre = "Adventure"
             case 16: genre = "Animation"
@@ -45,11 +44,11 @@ extension FetchedDataViewModelProtocol {
             case 10752: genre = "War"
             case 37: genre = "Western"
             default: genre = ""
-                
             }
+            guard genre != "" else { break }
             array.append(genre)
             
-            if array.count >= 3 {
+            if array.count >= 3  {
                 break
             }
         }

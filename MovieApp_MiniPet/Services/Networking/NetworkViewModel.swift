@@ -1,5 +1,5 @@
 //
-//  NetworkingViewModel.swift
+//  NetworkViewModel.swift
 //  MovieApp_MiniPet
 //
 //  Created by Georgiy Groshev on 20.12.2022.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class NetworkingViewModel {
+class NetworkViewModel {
     
-    var networkServices = NetworkingServices()
+    var networkServices = NetworkServices()
     
     func fetchMovieData(withPath path: PathMovieCategory, completion: @escaping ([Result]?) -> Void) {
         
@@ -35,7 +35,7 @@ class NetworkingViewModel {
     }
 }
 //MARK: - Decode JSON
-extension NetworkingViewModel {
+extension NetworkViewModel {
     
     private func decodeJSON<T: Decodable>(withType type: T.Type, fromData data: Data?) -> T? {
         

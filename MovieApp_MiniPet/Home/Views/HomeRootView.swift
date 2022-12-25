@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 final class HomeRootView: BaseView {
     
@@ -13,25 +14,39 @@ final class HomeRootView: BaseView {
     let compositionalLayoutFactory = CompositionalLayoutFactory()
     let indicatorView = UIActivityIndicatorView()
     
+    let noInternetConnectionView = NoInternetConnectionView()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
             indicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            indicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            indicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            noInternetConnectionView.topAnchor.constraint(equalTo: topAnchor),
+            noInternetConnectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            noInternetConnectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            noInternetConnectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
         ])
     }
 }
 //MARK: - Required Methods
 extension HomeRootView {
-    
     override func setupViews() {
-        [collectionView, indicatorView].forEach{ addSubview($0) }
+        [collectionView, indicatorView, noInternetConnectionView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
-        [indicatorView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+        [indicatorView, noInternetConnectionView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
         indicatorView.color = R.Colors.mainWhite
+    }
+}
+//MARK: - Internet Connection Method
+extension HomeRootView {
+    func checkInternetConnection(isConnection: Bool) {
+        
+        self.noInternetConnectionView.isHidden = isConnection
+        self.collectionView.isHidden = !isConnection
     }
 }
 //MARK: - CollectionView CompositionalLayout
