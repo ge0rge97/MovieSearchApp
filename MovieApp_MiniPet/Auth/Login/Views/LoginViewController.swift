@@ -9,8 +9,13 @@ import UIKit
 
 final class LoginViewController: BaseViewController<LoginRootView> {
     
+    private var authViewModel: AuthenticationViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        authViewModel = AuthenticationViewModel()
+        authViewModel?.authOutput = self
         
         setupNavigationTitle()
         setupButtonAction()
@@ -20,11 +25,9 @@ final class LoginViewController: BaseViewController<LoginRootView> {
 private extension LoginViewController {
     
     func setupNavigationTitle() {
-        
         self.navigationItem.title = "LOGIN"
     }
     func setupButtonAction() {
-        
         mainView.authButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         mainView.googleButton.addTarget(self, action: #selector(googleAuthButtonAction), for: .touchUpInside)
     }
@@ -34,9 +37,22 @@ private extension LoginViewController {
 private extension LoginViewController {
     
     func loginButtonAction() {
-        print(#function)
+        authViewModel?.login(email: mainView.emailTextField.text!, password: mainView.passwordTextField.text!)
     }
     func googleAuthButtonAction() {
         print(#function)
+    }
+}
+//MARK: - AuthOutput
+extension LoginViewController: AuthOutputProtocol {
+    func successAuth(withUser user: MovieUserModel) {
+        print(user.email)
+        
+        let tabBar = TabBarController()
+        tabBar.modalPresentationStyle = .fullScreen
+        present(tabBar, animated: true)
+    }
+    func failAuth(withError error: String) {
+        self.getAlertWithError(error: error)
     }
 }

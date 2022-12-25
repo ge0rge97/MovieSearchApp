@@ -10,7 +10,6 @@ import UIKit
 class BaseViewController<View: UIView>: UIViewController {
     
     var mainView: View { view as! View }
-    
     override func loadView() {
         view = View()
     }
@@ -19,7 +18,6 @@ class BaseViewController<View: UIView>: UIViewController {
 extension BaseViewController {
     
     func getCurrentIndexPath(withSender sender: UIButton, andCollectionView collectionView: UICollectionView) -> IndexPath? {
-        
         var superview = sender.superview
         while let view = superview, !(view is UICollectionViewCell) {
             superview = view.superview
@@ -27,5 +25,14 @@ extension BaseViewController {
         guard let cell = superview as? UICollectionViewCell else { return nil }
         guard let indexPath = collectionView.indexPath(for: cell) else { return nil }
         return indexPath
+    }
+}
+//MARK: - Custom Alerts
+extension BaseViewController {
+    
+    func getAlertWithError(error: String) {
+        let alert = UIAlertController(title: "Opps, there is some error!", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK!", style: .default))
+        present(alert, animated: true)
     }
 }

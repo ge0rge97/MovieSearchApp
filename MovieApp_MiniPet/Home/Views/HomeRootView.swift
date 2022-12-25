@@ -39,6 +39,7 @@ extension HomeRootView {
         [indicatorView, noInternetConnectionView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
         indicatorView.color = R.Colors.mainWhite
+        noInternetConnectionView.isHidden = true
     }
 }
 //MARK: - Internet Connection Method
