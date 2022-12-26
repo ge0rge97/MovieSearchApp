@@ -13,6 +13,8 @@ final class SignUpRootView: AuthBaseView {
         super.init(frame: frame)
 
         self.authButton.setTitle("Sign Up", for: .normal)
+        self.transitionView.transitionLabel.text = "Already have an account?"
+        self.transitionView.transitionButton.setTitle("Login!", for: .normal)
     }
 
     required init?(coder: NSCoder) {

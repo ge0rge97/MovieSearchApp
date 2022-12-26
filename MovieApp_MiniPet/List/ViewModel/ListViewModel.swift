@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol ListViewModelProtocol: MovieViewModelProtocol {
     
@@ -18,11 +19,12 @@ class ListViewModel: ListViewModelProtocol {
     
     private let savedSystem = MementoStateSaver()
     private var selectedIndexPath: IndexPath?
+    private var currentUser = Auth.auth().currentUser
     
     var movieData: [MovieModel] {
         get {
             do {
-                return try savedSystem.load("listViewModeSaveKey")
+                return try savedSystem.load(currentUser?.uid ?? "unknown")
             } catch let error {
                 print(error.localizedDescription)
                 return []
@@ -30,7 +32,7 @@ class ListViewModel: ListViewModelProtocol {
         }
         set {
             do {
-                try savedSystem.save(newValue, title: "listViewModeSaveKey")
+                try savedSystem.save(newValue, title: currentUser?.uid ?? "unknown")
             } catch let error {
                 print(error.localizedDescription)
             }

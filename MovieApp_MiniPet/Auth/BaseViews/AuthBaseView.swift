@@ -11,6 +11,7 @@ class AuthBaseView: BaseView {
     
     let emailTextField = AuthTextField(placeholder: "Enter Your Email")
     let passwordTextField = AuthTextField(placeholder: "Enter Your Password")
+    let transitionView = TransitionView()
     
     let authButton = AuthButton()
     let googleButton = GoogleAuthButton()
@@ -36,6 +37,11 @@ class AuthBaseView: BaseView {
             googleButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mainPadding),
             googleButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mainPadding),
             googleButton.heightAnchor.constraint(equalTo: authButton.heightAnchor),
+            
+            transitionView.topAnchor.constraint(equalTo: googleButton.bottomAnchor, constant: 30),
+            transitionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 80),
+            transitionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
+            transitionView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
@@ -44,12 +50,12 @@ extension AuthBaseView {
     
     override func setupViews() {
         [emailTextField, passwordTextField, authButton].forEach{ mainStackView.addArrangedSubview($0) }
-        [mainStackView, googleButton, orView].forEach{ addSubview($0) }
+        [mainStackView, googleButton, orView, transitionView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
         
-        [mainStackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+        [mainStackView, transitionView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
         mainStackView.axis = .vertical
         mainStackView.distribution = .fillEqually

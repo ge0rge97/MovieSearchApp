@@ -9,9 +9,14 @@ import UIKit
 
 final class StartViewController: BaseViewController<StartRootView> {
     
+    private let signUpVC = SignUpViewController()
+    private let loginVC = LoginViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        signUpVC.transitionDelegate = self
+        loginVC.transitionDelegate = self
         setupButtonAction()
     }
 }
@@ -19,9 +24,16 @@ final class StartViewController: BaseViewController<StartRootView> {
 private extension StartViewController {
     
     func setupButtonAction() {
-        
         mainView.loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         mainView.signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
+    }
+    func setupLoginVC() {
+        let navLoginVC = BaseNavigationController(rootViewController: loginVC)
+        present(navLoginVC, animated: true)
+    }
+    func setupSignUpVC() {
+        let navLoginVC = BaseNavigationController(rootViewController: signUpVC)
+        present(navLoginVC, animated: true)
     }
 }
 //MARK: - Buttons Action
@@ -29,13 +41,18 @@ private extension StartViewController {
 private extension StartViewController {
     
     func loginButtonAction() {
-        let loginVC = LoginViewController()
-        let navLoginVC = BaseNavigationController(rootViewController: loginVC)
-        present(navLoginVC, animated: true)
+        self.setupLoginVC()
     }
     func signUpButtonAction() {
-        let signUpVC = SignUpViewController()
-        let navSignUpVC = BaseNavigationController(rootViewController: signUpVC)
-        present(navSignUpVC, animated: true)
+        self.setupSignUpVC()
+    }
+}
+//MARK: - Transition Delegate
+extension StartViewController: AuthTransitionDelegate {
+    func toLoginVC() {
+        self.setupLoginVC()
+    }
+    func toSignUpVC() {
+        self.setupSignUpVC()
     }
 }

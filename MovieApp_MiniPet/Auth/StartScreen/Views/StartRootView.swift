@@ -11,12 +11,10 @@ final class StartRootView: BaseView {
     
     let loginButton = AuthButton()
     let signUpButton = AuthButton()
-    
     private let stackView = UIStackView()
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -34,9 +32,7 @@ extension StartRootView {
     }
     override func configureAppearance() {
         super.configureAppearance()
-        
         [stackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false}
-        
         self.backgroundColor = .white
         
         loginButton.setTitle("LOGIN", for: .normal)
@@ -54,7 +50,6 @@ extension StartRootView {
         
         static let buttonHeight: CGFloat = 40
         static let mainSpacing: CGFloat = 20
-        
         static let stackViewSpacing:CGFloat = 20
     }
 }

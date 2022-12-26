@@ -9,8 +9,8 @@ import Foundation
 import FirebaseAuth
 
 class LoginAuthService {
-    static var shared = LoginAuthService() //Singleton
-    private let auth = Auth.auth() //Init Firestore Auth
+    static var shared = LoginAuthService()
+    private let auth = Auth.auth()
     
     let validationCheck = ValidationCheck()
     
@@ -30,14 +30,13 @@ class LoginAuthService {
             }
             completion(.success(result.user))
         }
-    } //Login User
-    //    func logOut(viewController: BaseViewController) {
-    //        do {
-    //            try Auth.auth().signOut()
-    //            viewController.modalPresentationStyle = .fullScreen
-    //            UIApplication.getTopViewController()?.present(viewController, animated: true)
-    //        } catch let error as NSError {
-    //            print(error.localizedDescription)
-    //        }
-    //    } //LogOut
+    }
+    func logOut(completion: @escaping (Swift.Result<(Void), NSError>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(.success(Void()))
+        } catch let error as NSError {
+            completion(.failure(error))
+        }
+    }
 }
