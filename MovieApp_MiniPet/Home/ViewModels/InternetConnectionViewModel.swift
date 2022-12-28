@@ -23,7 +23,7 @@ class InternetConnectionViewModel: InternetConnectionViewModelProtocol {
     
     private func checkInternetConnection() {
         
-        self.isInternetConnection.value = NetworkiMonitor.shared.isConnected
-        NetworkiMonitor.shared.stopMonitoring()
+        self.isInternetConnection.value = NetworkMonitor.shared.isConnected
+        NetworkMonitor.shared.stopMonitoring()
     }
 }

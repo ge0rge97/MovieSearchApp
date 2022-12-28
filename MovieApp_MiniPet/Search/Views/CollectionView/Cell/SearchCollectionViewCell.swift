@@ -16,11 +16,10 @@ final class SearchCollectionViewCell: BaseCollectionViewMovieCell {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
             
-            let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
+            let url = URL(string: "\(R.StringURLs.movieDatabaseImage)\(viewModel.imageName)")
             movieCellImage.sd_setImage(with: url)
         }
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

@@ -8,9 +8,9 @@
 import Foundation
 import Network
 
-final class NetworkiMonitor {
+final class NetworkMonitor {
     
-    static let shared = NetworkiMonitor()
+    static let shared = NetworkMonitor()
     
     private let monitor: NWPathMonitor
     private let queue = DispatchQueue(label: "NetworkConnectivityMonitor")
@@ -24,9 +24,7 @@ final class NetworkiMonitor {
     func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.isConnected = path.status != .unsatisfied
-            self?.interfaceType = NWInterface.InterfaceType.allCases.filter {
-                path.usesInterfaceType($0)
-            }.first
+            self?.interfaceType = NWInterface.InterfaceType.allCases.filter { path.usesInterfaceType($0) }.first
         }
         monitor.start(queue: queue)
     }

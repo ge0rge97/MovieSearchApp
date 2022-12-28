@@ -24,9 +24,9 @@ final class MovieSearchBar: UISearchBar {
 private extension MovieSearchBar {
     
     func configureAppearance() {
-        self.barTintColor = UIColor(hexString: "3C3C3C")
+        self.barTintColor = R.Colors.searchBarColor
         self.tintColor = R.Colors.separator
         self.searchTextField.textColor = R.Colors.mainWhite
-        self.placeholder = "Search your favourite movie"
+        self.placeholder = R.Strings.Search.searchBarPlaceholder
     }
 }

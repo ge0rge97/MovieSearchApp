@@ -10,7 +10,6 @@ import UIKit
 final class OrView: UIView {
     
     private let orLabel = UILabel()
-    
     private let leftLineView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     private let rightLineView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
@@ -21,7 +20,6 @@ final class OrView: UIView {
         setupConstraints()
         configureAppearance()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,9 +46,7 @@ extension OrView {
         ])
     }
     func configureAppearance() {
-        
-        [orLabel, leftLineView, rightLineView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
-        self.translatesAutoresizingMaskIntoConstraints = false
+        [orLabel, leftLineView, rightLineView, self].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
         leftLineView.backgroundColor = R.Colors.mainWhite
         rightLineView.backgroundColor = R.Colors.mainWhite

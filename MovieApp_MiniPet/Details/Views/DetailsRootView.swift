@@ -17,7 +17,7 @@ final class DetailsRootView: BaseView {
     let genresLabel = DetailsRootView.createGenresLabel()
     let detailsMovieOverviewLabel = DetailsRootView.createDetailsMovieOverviewLabel()
     
-    let watchNowButton = UIButton(type: .system)
+    let getDetailsButton = UIButton(type: .system)
     private let addToListView = DetailsRootView.createAddToListView()
     private let averageRatingView = DetailsRootView.createAverageRatingView()
     private let sharedView = DetailsRootView.createSharedView()
@@ -33,24 +33,22 @@ final class DetailsRootView: BaseView {
             detailsMovieImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             detailsMovieImage.heightAnchor.constraint(equalToConstant: self.bounds.height / 2.5),
             
-            watchNowButton.heightAnchor.constraint(equalToConstant: 60),
+            getDetailsButton.heightAnchor.constraint(equalToConstant: Constants.buttonsHeight),
             
-            detailsStackView.topAnchor.constraint(equalTo: detailsMovieImage.bottomAnchor, constant: 10),
-            detailsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            detailsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            detailsStackView.topAnchor.constraint(equalTo: detailsMovieImage.bottomAnchor, constant: Constants.stackViewPadding),
+            detailsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.stackViewPadding),
+            detailsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.stackViewPadding),
         
-            helpersStackView.heightAnchor.constraint(equalToConstant: 60)
+            helpersStackView.heightAnchor.constraint(equalToConstant: Constants.buttonsHeight)
         ])
     }
     
     func addAddToListViewRecognizer(withTarget target: Any, andAction action: Selector) {
-        
         let addToListRecognizer = UITapGestureRecognizer(target: target, action: action)
         addToListView.isUserInteractionEnabled = true
         addToListView.addGestureRecognizer(addToListRecognizer)
     }
     func addSharedViewRecognizer(withTarget target: Any, andAction action: Selector) {
-        
         let addToListRecognizer = UITapGestureRecognizer(target: target, action: action)
         sharedView.isUserInteractionEnabled = true
         sharedView.addGestureRecognizer(addToListRecognizer)
@@ -64,24 +62,24 @@ extension DetailsRootView {
     
     override func setupViews() {
         [addToListView, averageRatingView, sharedView].forEach{ helpersStackView.addArrangedSubview($0) }
-        [detailsMoveTitle, releasedMovieYearLabel, genresLabel, watchNowButton, detailsMovieOverviewLabel, helpersStackView].forEach{ detailsStackView.addArrangedSubview($0) }
+        [detailsMoveTitle, releasedMovieYearLabel, genresLabel, detailsMovieOverviewLabel, getDetailsButton, helpersStackView].forEach{ detailsStackView.addArrangedSubview($0) }
         [detailsMovieImage, detailsStackView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
         
-        [detailsStackView, detailsMovieImage, detailsMoveTitle, releasedMovieYearLabel, watchNowButton, helpersStackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+        [detailsStackView, detailsMovieImage, getDetailsButton, helpersStackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
         detailsStackView.axis = .vertical
         detailsStackView.distribution = .fill
-        detailsStackView.spacing = 14
+        detailsStackView.spacing = Constants.stackViewSpacing
         
         helpersStackView.distribution = .fillEqually
         
-        watchNowButton.backgroundColor = R.Colors.mainWhite
-        watchNowButton.setTitle("Watch Now", for: .normal)
-        watchNowButton.setTitleColor(.black, for: .normal)
-        watchNowButton.layer.cornerRadius = 10
+        getDetailsButton.backgroundColor = R.Colors.mainWhite
+        getDetailsButton.setTitle(R.Strings.Details.movieDetailsButtonTitle, for: .normal)
+        getDetailsButton.setTitleColor(.black, for: .normal)
+        getDetailsButton.layer.cornerRadius = 10
     }
 }
 //MARK: - Private Create Methods
@@ -93,7 +91,7 @@ private extension DetailsRootView {
                                 numberOfLines: 0)
     }
     static func createReleasedMovieYearLabel() -> DetailsBaseLabel {
-        return DetailsBaseLabel(textColor: UIColor(hexString: "8C8C8C"),
+        return DetailsBaseLabel(textColor: R.Colors.createdYearColor,
                                 font: R.Fonts.regularFont(withSize: 16))
     }
     static func createGenresLabel() -> DetailsBaseLabel {
@@ -102,18 +100,26 @@ private extension DetailsRootView {
     }
     static func createDetailsMovieOverviewLabel() -> DetailsBaseLabel {
         return DetailsBaseLabel(textColor: R.Colors.mainWhite,
-                                font: R.Fonts.regularFont(withSize: 14), numberOfLines: 0)
+                                font: R.Fonts.regularFont(withSize: 14), numberOfLines: 3)
     }
     static func createAddToListView() -> DetailsHelpersView {
-        return DetailsHelpersView(title: "List",
-                                    viewIcon: UIImage(systemName: "bookmark"))
+        return DetailsHelpersView(title: R.Strings.Details.addToListViewTitle,
+                                  viewIcon: R.Images.addToListViewImage)
     }
     static func createAverageRatingView() -> DetailsHelpersView {
         return DetailsHelpersView(title: "",
-                                  viewIcon: UIImage(systemName: "star"))
+                                  viewIcon: R.Images.averageRatingViewImage)
     }
     static func createSharedView() -> DetailsHelpersView {
-        return DetailsHelpersView(title: "Shared",
-                                  viewIcon: UIImage(systemName: "arrowshape.turn.up.forward"))
+        return DetailsHelpersView(title: R.Strings.Details.sharedViewTitle,
+                                  viewIcon: R.Images.sharedViewImage)
+    }
+}
+//MARK: - Constants
+extension DetailsRootView {
+    private enum Constants {
+        static let buttonsHeight: CGFloat = 60
+        static let stackViewPadding: CGFloat = 10
+        static let stackViewSpacing: CGFloat = 14
     }
 }

@@ -17,7 +17,6 @@ final class SignUpViewController: BaseViewController<SignUpRootView> {
         
         authViewModel = AuthenticationViewModel()
         authViewModel?.authOutput = self
-        
         setupNavigationTitle()
         setupButtonAction()
     }
@@ -26,11 +25,10 @@ final class SignUpViewController: BaseViewController<SignUpRootView> {
 private extension SignUpViewController {
     
     func setupNavigationTitle() {
-        self.navigationItem.title = "SIGN UP"
+        self.navigationItem.title = R.Strings.Auth.signUpTitle
     }
     func setupButtonAction() {
         mainView.authButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
-        mainView.googleButton.addTarget(self, action: #selector(googleAuthButtonAction), for: .touchUpInside)
         mainView.transitionView.transitionButton.addTarget(self, action: #selector(transitionButton), for: .touchUpInside)
     }
 }
@@ -41,12 +39,9 @@ extension SignUpViewController {
     func signUpButtonAction() {
         authViewModel?.signUp(email: mainView.emailTextField.text!, password: mainView.passwordTextField.text!)
     }
-    func googleAuthButtonAction() {
-        print(#function)
-    }
     func transitionButton() {
-        dismiss(animated: true) {
-            self.transitionDelegate?.toLoginVC()
+        dismiss(animated: true) { [weak self] in
+            self?.transitionDelegate?.toLoginVC()
         }
     }
 }

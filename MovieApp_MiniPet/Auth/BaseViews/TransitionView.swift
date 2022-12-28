@@ -8,6 +8,7 @@
 import UIKit
 
 final class TransitionView: UIView {
+    
     let transitionLabel = UILabel()
     let transitionButton = UIButton()
     

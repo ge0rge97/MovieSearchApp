@@ -14,7 +14,12 @@ class BaseNavigationController: UINavigationController {
         configureAppearance()
     }
     
-    private func configureAppearance() {
+    
+}
+//MARK: - Private Methods
+private extension BaseNavigationController {
+    
+    func configureAppearance() {
         
         view.backgroundColor = R.Colors.mainBackground
         navigationBar.isTranslucent = true

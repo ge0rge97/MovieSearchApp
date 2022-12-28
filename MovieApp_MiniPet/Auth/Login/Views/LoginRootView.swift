@@ -12,10 +12,9 @@ final class LoginRootView: AuthBaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.authButton.setTitle("Login", for: .normal)
-        
-        transitionView.transitionLabel.text = "Haven't account?"
-        transitionView.transitionButton.setTitle("Sign Up!", for: .normal)
+        self.authButton.setTitle(R.Strings.Auth.loginTitle, for: .normal)
+        transitionView.transitionLabel.text = R.Strings.Auth.loginTransition
+        transitionView.transitionButton.setTitle(R.Strings.Auth.signUpTitle, for: .normal)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

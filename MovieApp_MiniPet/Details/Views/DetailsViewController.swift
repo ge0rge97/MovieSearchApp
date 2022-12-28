@@ -14,7 +14,6 @@ final class DetailsViewController: BaseViewController<DetailsRootView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupButtonActions()
         setupViewModel()
     }
@@ -23,7 +22,7 @@ final class DetailsViewController: BaseViewController<DetailsRootView> {
 private extension DetailsViewController {
     
     func setupButtonActions() {
-        mainView.watchNowButton.addTarget(self, action: #selector(watchNowButtonAction), for: .touchUpInside)
+        mainView.getDetailsButton.addTarget(self, action: #selector(getDetailsButtonAction), for: .touchUpInside)
         mainView.addAddToListViewRecognizer(withTarget: self, andAction: #selector(self.addToListViewRecognizer(_ :)))
         mainView.addSharedViewRecognizer(withTarget: self, andAction: #selector(self.sharedViewRecognizer(_ :)))
     }
@@ -35,7 +34,7 @@ private extension DetailsViewController {
         mainView.detailsMovieOverviewLabel.text = viewModel.overview
         mainView.genresLabel.text = viewModel.genre
         mainView.addRating(withRating: viewModel.rating)
-        let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
+        let url = URL(string: "\(R.StringURLs.movieDatabaseImage)\(viewModel.imageName)")
         mainView.detailsMovieImage.sd_setImage(with: url)
     }
 }
@@ -43,13 +42,19 @@ private extension DetailsViewController {
 @objc
 private extension DetailsViewController {
     
-    func watchNowButtonAction() {
-        print(#function)
+    func getDetailsButtonAction() {
+        viewModel?.getMoreInformation(completion: { movieUrl in
+            UIApplication.shared.open(movieUrl, options: [:], completionHandler: nil)
+        })
     }
     func addToListViewRecognizer(_ sender: UITapGestureRecognizer) {
         viewModel?.addSelectedMovieToList()
     }
     func sharedViewRecognizer(_ sender: UITapGestureRecognizer) {
-        print(#function)
+        guard let viewModel = viewModel else { return }
+        let sharedActivityController = UIActivityViewController(activityItems: [URL(string: "\(R.StringURLs.movieDatabaseInfo)\(viewModel.movieId)") as Any],
+                                                                                    applicationActivities: nil)
+        
+        present(sharedActivityController, animated: true)
     }
 }

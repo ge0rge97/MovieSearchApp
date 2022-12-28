@@ -19,7 +19,6 @@ final class AuthTextField: UITextField {
             string: placeholder,
             attributes: [NSAttributedString.Key.foregroundColor: R.Colors.mainWhite]
         )
-        
         self.backgroundColor = .clear
         self.textColor = R.Colors.mainWhite
         self.layer.borderWidth = 1

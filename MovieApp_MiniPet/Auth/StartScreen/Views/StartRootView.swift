@@ -33,10 +33,10 @@ extension StartRootView {
     override func configureAppearance() {
         super.configureAppearance()
         [stackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false}
-        self.backgroundColor = .white
+        self.backgroundColor = R.Colors.mainWhite
         
-        loginButton.setTitle("LOGIN", for: .normal)
-        signUpButton.setTitle("SIGN UP", for: .normal)
+        loginButton.setTitle(R.Strings.Auth.loginTitle, for: .normal)
+        signUpButton.setTitle(R.Strings.Auth.signUpTitle, for: .normal)
         
         stackView.axis = .vertical
         stackView.distribution = .fillEqually

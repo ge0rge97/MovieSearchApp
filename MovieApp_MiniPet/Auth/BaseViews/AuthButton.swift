@@ -11,7 +11,6 @@ final class AuthButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureAppearance()
     }
     required init?(coder: NSCoder) {
@@ -21,7 +20,6 @@ final class AuthButton: UIButton {
 private extension AuthButton {
     
     func configureAppearance() {
-        
         self.backgroundColor = R.Colors.baseButtonColor
         self.setTitleColor(R.Colors.mainBackground, for: .normal)
         self.titleLabel?.font = R.Fonts.boldFont(withSize: 22)

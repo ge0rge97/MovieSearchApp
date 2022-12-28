@@ -9,19 +9,17 @@ import UIKit
 
 class AuthBaseView: BaseView {
     
-    let emailTextField = AuthTextField(placeholder: "Enter Your Email")
-    let passwordTextField = AuthTextField(placeholder: "Enter Your Password")
-    let transitionView = TransitionView()
-    
-    let authButton = AuthButton()
-    let googleButton = GoogleAuthButton()
+    let emailTextField = AuthTextField(placeholder: R.Strings.Auth.emailTextFieldText)
+    let passwordTextField = AuthTextField(placeholder: R.Strings.Auth.passwordTextFieldText)
 
+    let authButton = AuthButton()
+
+    let transitionView = TransitionView()
     private let orView = OrView()
     private let mainStackView = UIStackView()
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Constants.mainStackViewTopPadding),
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mainPadding),
@@ -33,12 +31,7 @@ class AuthBaseView: BaseView {
             orView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mainPadding),
             orView.heightAnchor.constraint(equalToConstant: 20),
             
-            googleButton.topAnchor.constraint(equalTo: orView.bottomAnchor, constant: 40),
-            googleButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mainPadding),
-            googleButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.mainPadding),
-            googleButton.heightAnchor.constraint(equalTo: authButton.heightAnchor),
-            
-            transitionView.topAnchor.constraint(equalTo: googleButton.bottomAnchor, constant: 30),
+            transitionView.topAnchor.constraint(equalTo: orView.bottomAnchor, constant: 30),
             transitionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 80),
             transitionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
             transitionView.heightAnchor.constraint(equalToConstant: 50)
@@ -50,11 +43,10 @@ extension AuthBaseView {
     
     override func setupViews() {
         [emailTextField, passwordTextField, authButton].forEach{ mainStackView.addArrangedSubview($0) }
-        [mainStackView, googleButton, orView, transitionView].forEach{ addSubview($0) }
+        [mainStackView, orView, transitionView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
-        
         [mainStackView, transitionView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
         mainStackView.axis = .vertical

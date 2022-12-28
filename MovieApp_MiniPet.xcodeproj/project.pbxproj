@@ -29,7 +29,6 @@
 		0114B2C8294D0AD600693CDA /* UITextField+ Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2C7294D0AD600693CDA /* UITextField+ Padding.swift */; };
 		0114B2CB294D0CD300693CDA /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2CA294D0CD300693CDA /* AuthTextField.swift */; };
 		0114B2CD294D0F4600693CDA /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2CC294D0F4600693CDA /* AuthButton.swift */; };
-		0114B2CF294D17C800693CDA /* GoogleAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2CE294D17C800693CDA /* GoogleAuthButton.swift */; };
 		0114B2D1294D199100693CDA /* OrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D0294D199100693CDA /* OrView.swift */; };
 		0114B2D3294D1C4700693CDA /* LoginRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D2294D1C4700693CDA /* LoginRootView.swift */; };
 		0114B2D7294D1DAE00693CDA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */; };
@@ -62,6 +61,7 @@
 		01665053294E65B400078840 /* TrendingMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01665052294E65B400078840 /* TrendingMovieCollectionViewCell.swift */; };
 		01665055294E6D8C00078840 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01665054294E6D8C00078840 /* SectionHeader.swift */; };
 		01665057294E6DB900078840 /* HomeCollectionViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01665056294E6DB900078840 /* HomeCollectionViewHeaderCell.swift */; };
+		0169934E295B440F0046A145 /* String+ removeSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0169934D295B440F0046A145 /* String+ removeSpace.swift */; };
 		01937A4A294E07860041B6BA /* UIBarButtonItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01937A49294E07860041B6BA /* UIBarButtonItem+.swift */; };
 		01937A4C294E0E1D0041B6BA /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01937A4B294E0E1D0041B6BA /* BaseCollectionView.swift */; };
 		01937A4F294E10400041B6BA /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01937A4E294E10400041B6BA /* MovieModel.swift */; };
@@ -85,7 +85,7 @@
 		01BE74602958ED6D00BAA5A6 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE745F2958ED6D00BAA5A6 /* AuthenticationViewModel.swift */; };
 		01DF7145295A05EA00B29FE6 /* LogOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF7144295A05EA00B29FE6 /* LogOutViewModel.swift */; };
 		01F8482B2958A2FD0038717E /* InternetConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8482A2958A2FD0038717E /* InternetConnectionViewModel.swift */; };
-		01F8482D2958A3200038717E /* NetworkiMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8482C2958A3200038717E /* NetworkiMonitor.swift */; };
+		01F8482D2958A3200038717E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8482C2958A3200038717E /* NetworkMonitor.swift */; };
 		01F8482F2958A3390038717E /* NoInternetConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8482E2958A3390038717E /* NoInternetConnectionView.swift */; };
 		01FA85E92950CABD00EDE485 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA85E82950CABD00EDE485 /* NetworkServices.swift */; };
 /* End PBXBuildFile section */
@@ -115,7 +115,6 @@
 		0114B2C7294D0AD600693CDA /* UITextField+ Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+ Padding.swift"; sourceTree = "<group>"; };
 		0114B2CA294D0CD300693CDA /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		0114B2CC294D0F4600693CDA /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
-		0114B2CE294D17C800693CDA /* GoogleAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthButton.swift; sourceTree = "<group>"; };
 		0114B2D0294D199100693CDA /* OrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrView.swift; sourceTree = "<group>"; };
 		0114B2D2294D1C4700693CDA /* LoginRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRootView.swift; sourceTree = "<group>"; };
 		0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +146,7 @@
 		01665052294E65B400078840 /* TrendingMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		01665054294E6D8C00078840 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		01665056294E6DB900078840 /* HomeCollectionViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewHeaderCell.swift; sourceTree = "<group>"; };
+		0169934D295B440F0046A145 /* String+ removeSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ removeSpace.swift"; sourceTree = "<group>"; };
 		01937A49294E07860041B6BA /* UIBarButtonItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+.swift"; sourceTree = "<group>"; };
 		01937A4B294E0E1D0041B6BA /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		01937A4E294E10400041B6BA /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		01BE745F2958ED6D00BAA5A6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		01DF7144295A05EA00B29FE6 /* LogOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutViewModel.swift; sourceTree = "<group>"; };
 		01F8482A2958A2FD0038717E /* InternetConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionViewModel.swift; sourceTree = "<group>"; };
-		01F8482C2958A3200038717E /* NetworkiMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkiMonitor.swift; sourceTree = "<group>"; };
+		01F8482C2958A3200038717E /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		01F8482E2958A3390038717E /* NoInternetConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetConnectionView.swift; sourceTree = "<group>"; };
 		01FA85E82950CABD00EDE485 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,7 +211,7 @@
 			children = (
 				01FA85E82950CABD00EDE485 /* NetworkServices.swift */,
 				0119015F29523321003D75D8 /* NetworkViewModel.swift */,
-				01F8482C2958A3200038717E /* NetworkiMonitor.swift */,
+				01F8482C2958A3200038717E /* NetworkMonitor.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -315,12 +315,9 @@
 		0114B2BA294D047400693CDA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0114B2BB294D048C00693CDA /* UIColor+ HexString.swift */,
-				0114B2C7294D0AD600693CDA /* UITextField+ Padding.swift */,
-				01937A49294E07860041B6BA /* UIBarButtonItem+.swift */,
-				010EDCBE295635290078FB0F /* String+ FormatDate.swift */,
 				010EDCCA295636B40078FB0F /* ViewModelObservable+.swift */,
-				01BE745C2958E4B700BAA5A6 /* String+ RegEx.swift */,
+				01DB2A5E295CA2CA00A2A24B /* UIKit+ */,
+				01DB2A5F295CA2D600A2A24B /* String+ */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,8 +353,8 @@
 		0114B2C2294D070000693CDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0114B2C5294D07BE00693CDA /* LoginViewController.swift */,
 				0114B2D2294D1C4700693CDA /* LoginRootView.swift */,
+				0114B2C5294D07BE00693CDA /* LoginViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 				0114B2C3294D070B00693CDA /* AuthBaseView.swift */,
 				0114B2CA294D0CD300693CDA /* AuthTextField.swift */,
 				0114B2CC294D0F4600693CDA /* AuthButton.swift */,
-				0114B2CE294D17C800693CDA /* GoogleAuthButton.swift */,
 				0114B2D0294D199100693CDA /* OrView.swift */,
 				016167B7295A442F00FF0211 /* TransitionView.swift */,
 			);
@@ -386,8 +382,8 @@
 		0114B2D5294D1DA800693CDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */,
 				0114B2D8294D1DC100693CDA /* SignUpRootView.swift */,
+				0114B2D6294D1DAE00693CDA /* SignUpViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -458,8 +454,8 @@
 		0139F6D32950A77E009D35C7 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				0149D1AC2957196400D2FF5C /* ViewModel */,
 				0139F6D42950A78A009D35C7 /* Views */,
+				0149D1AC2957196400D2FF5C /* ViewModel */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -615,6 +611,26 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		01DB2A5E295CA2CA00A2A24B /* UIKit+ */ = {
+			isa = PBXGroup;
+			children = (
+				0114B2BB294D048C00693CDA /* UIColor+ HexString.swift */,
+				0114B2C7294D0AD600693CDA /* UITextField+ Padding.swift */,
+				01937A49294E07860041B6BA /* UIBarButtonItem+.swift */,
+			);
+			path = "UIKit+";
+			sourceTree = "<group>";
+		};
+		01DB2A5F295CA2D600A2A24B /* String+ */ = {
+			isa = PBXGroup;
+			children = (
+				010EDCBE295635290078FB0F /* String+ FormatDate.swift */,
+				01BE745C2958E4B700BAA5A6 /* String+ RegEx.swift */,
+				0169934D295B440F0046A145 /* String+ removeSpace.swift */,
+			);
+			path = "String+";
+			sourceTree = "<group>";
+		};
 		01FA85E72950C6FE00EDE485 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,14 +722,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0114B2D3294D1C4700693CDA /* LoginRootView.swift in Sources */,
-				01F8482D2958A3200038717E /* NetworkiMonitor.swift in Sources */,
+				01F8482D2958A3200038717E /* NetworkMonitor.swift in Sources */,
 				01F8482B2958A2FD0038717E /* InternetConnectionViewModel.swift in Sources */,
 				0114B2D1294D199100693CDA /* OrView.swift in Sources */,
 				01665053294E65B400078840 /* TrendingMovieCollectionViewCell.swift in Sources */,
 				01665051294E659D00078840 /* UpcomingMovieCollectionViewCell.swift in Sources */,
 				01DF7145295A05EA00B29FE6 /* LogOutViewModel.swift in Sources */,
 				01342092294DDDEC00C91D24 /* HomeRootView.swift in Sources */,
-				0114B2CF294D17C800693CDA /* GoogleAuthButton.swift in Sources */,
 				0114B2C6294D07BE00693CDA /* LoginViewController.swift in Sources */,
 				01937A4C294E0E1D0041B6BA /* BaseCollectionView.swift in Sources */,
 				014D675129509869004FA7A0 /* SavedMovieCompositionalLayout.swift in Sources */,
@@ -765,6 +780,7 @@
 				01937A57294E16DF0041B6BA /* UpcomingMovieCompositionalLayout.swift in Sources */,
 				01FA85E92950CABD00EDE485 /* NetworkServices.swift in Sources */,
 				010EDCCB295636B40078FB0F /* ViewModelObservable+.swift in Sources */,
+				0169934E295B440F0046A145 /* String+ removeSpace.swift in Sources */,
 				0114B2C8294D0AD600693CDA /* UITextField+ Padding.swift in Sources */,
 				01937A4F294E10400041B6BA /* MovieModel.swift in Sources */,
 				01BE74602958ED6D00BAA5A6 /* AuthenticationViewModel.swift in Sources */,

@@ -14,8 +14,10 @@ protocol DetailMovieViewModelProtocol: AnyObject {
     var rating: String { get }
     var overview: String { get }
     var genre: String { get }
+    var movieId: Int { get }
     
     func addSelectedMovieToList()
+    func getMoreInformation(completion: @escaping (URL) -> ())
 }
 
 class DetailViewModel: DetailMovieViewModelProtocol {
@@ -40,6 +42,9 @@ class DetailViewModel: DetailMovieViewModelProtocol {
     var genre: String {
         return item.movieGenres
     }
+    var movieId: Int {
+        return item.movieId
+    }
     
     init(item: MovieModel) {
         self.item = item
@@ -51,5 +56,15 @@ extension DetailViewModel {
     func addSelectedMovieToList() {
         let listVM = ListViewModel()
         listVM.addItem(item)
+    }
+}
+//MARK: - Search Movie on Google
+extension DetailViewModel {
+    
+    func getMoreInformation(completion: @escaping (URL) -> ()) {
+        let url = URL(string: "\(R.StringURLs.movieDatabaseInfo)\(item.movieId)")
+        if let url = url {
+            completion(url)
+        }
     }
 }

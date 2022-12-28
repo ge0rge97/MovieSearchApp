@@ -32,25 +32,32 @@ private extension NoInternetConnectionView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             noInternetConnectionImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-            noInternetConnectionImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            noInternetConnectionImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            noInternetConnectionImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.imageSpacing),
+            noInternetConnectionImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.imageSpacing),
             noInternetConnectionImage.heightAnchor.constraint(equalTo: noInternetConnectionImage.widthAnchor),
             
-            noInternetConnectionLabel.bottomAnchor.constraint(equalTo: noInternetConnectionImage.topAnchor, constant: -20),
-            noInternetConnectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            noInternetConnectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            noInternetConnectionLabel.bottomAnchor.constraint(equalTo: noInternetConnectionImage.topAnchor, constant: -Constants.labelSpacing),
+            noInternetConnectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.labelSpacing),
+            noInternetConnectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.labelSpacing),
         ])
     }
     func configureAppearance() {
         [noInternetConnectionLabel, noInternetConnectionImage].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
-        noInternetConnectionLabel.text = "There's no Internet connection..."
+        noInternetConnectionLabel.text = R.Strings.Home.noInternetConnectionViewTitle
         noInternetConnectionLabel.textColor = R.Colors.baseButtonColor
         noInternetConnectionLabel.font = R.Fonts.boldFont(withSize: 18)
         noInternetConnectionLabel.textAlignment = .center
         
-        noInternetConnectionImage.image = UIImage(named: "noInternetConnectionImage")
+        noInternetConnectionImage.image = R.Images.noInternetConnectionViewImage
         noInternetConnectionImage.backgroundColor = R.Colors.baseButtonColor
         noInternetConnectionImage.layer.cornerRadius = 10
+    }
+}
+//MARK: - Constants
+extension NoInternetConnectionView {
+    private enum Constants {
+        static let imageSpacing: CGFloat = 50
+        static let labelSpacing: CGFloat = 20
     }
 }

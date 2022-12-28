@@ -15,23 +15,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-//        guard let windowScene = (scene as? UIWindowScene) else { return  }
-//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//        window?.windowScene = windowScene
-//        if let _ = Auth.auth().currentUser {
-//            let tabBarController = TabBarController()
-//            self.window?.rootViewController = tabBarController
-//        } else {
-//            let enterVC = StartViewController()
-//            window?.rootViewController = enterVC
-//        }
-//        window?.makeKeyAndVisible()
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = StartViewController()
-        window.makeKeyAndVisible()
-        self.window = window
+        guard let windowScene = (scene as? UIWindowScene) else { return  }
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        if let _ = Auth.auth().currentUser {
+            let tabBarController = TabBarController()
+            self.window?.rootViewController = tabBarController
+        } else {
+            let enterVC = StartViewController()
+            window?.rootViewController = enterVC
+        }
+        window?.makeKeyAndVisible()
+     //   guard let windowScene = (scene as? UIWindowScene) else { return }
+
+//        let window = UIWindow(windowScene: windowScene)
+//        window.rootViewController = StartViewController()
+//        window.makeKeyAndVisible()
+//        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -64,7 +64,6 @@ extension ListViewModel {
             print("\(item.movieTitle) removed")
         }
     }
-    
     func removedSelectedMovieFromList(forIndexPath indexPath: IndexPath) {
         let item = movieData[indexPath.item]
         self.removeItem(item)

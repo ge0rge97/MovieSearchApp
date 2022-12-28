@@ -89,8 +89,8 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchViewModel.getFetchedData(withSearchTerm: searchText)
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
-            self.reloadData()
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] _ in
+            self?.reloadData()
             
         })
         self.bindViewModel()

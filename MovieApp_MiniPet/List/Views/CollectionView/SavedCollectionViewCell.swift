@@ -9,18 +9,17 @@ import UIKit
 
 final class SavedCollectionViewCell: BaseCollectionViewMovieCell {
     
-    static let reuseId = "savedCollectionViewCell"
+    static let reuseId = R.CellIds.savedCollectionViewCell
     let removedButton = UIButton()
     
     weak var cellViewModel: DetailMovieViewModelProtocol? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
             
-            let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
+            let url = URL(string: "\(R.StringURLs.movieDatabaseImage)\(viewModel.imageName)")
             movieCellImage.sd_setImage(with: url)
         }
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -49,7 +48,14 @@ private extension SavedCollectionViewCell {
     func configureAppearance() {
         [removedButton].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
-        removedButton.setBackgroundImage(UIImage(systemName: "trash.fill"), for: .normal)
+        removedButton.setBackgroundImage(R.Images.removeButtonImage, for: .normal)
         removedButton.tintColor = R.Colors.baseButtonColor
+    }
+}
+//MARK: - Constants
+extension SavedCollectionViewCell {
+    private enum Constants {
+        static let savedButtonSize: CGFloat = 26
+        static let savedButtonSpacing: CGFloat = 10
     }
 }

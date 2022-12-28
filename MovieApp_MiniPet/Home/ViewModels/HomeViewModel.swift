@@ -18,7 +18,6 @@ class HomeViewModel: HomeViewModelProtocol {
     private let networking = NetworkViewModel()
     
     var fetchedMovieData: [Result]?
-    
     var isLoading: ViewModelObservable<Bool> = ViewModelObservable(false)
     
     var movieData: [MovieModel] {

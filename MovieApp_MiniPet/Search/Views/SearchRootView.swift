@@ -12,7 +12,6 @@ final class SearchRootView: BaseView {
     let searchBar = MovieSearchBar()
     lazy var collectionView = BaseCollectionView(withLayout: createCompositionalLayout())
     let compositionalLayout = SearchMovieCompositionalLayout(isHeaderNeeded: false)
-    
     let indicatorView = UIActivityIndicatorView()
     
     override func layoutSubviews() {
@@ -51,4 +50,3 @@ private extension SearchRootView {
         return layout
     }
 }
-

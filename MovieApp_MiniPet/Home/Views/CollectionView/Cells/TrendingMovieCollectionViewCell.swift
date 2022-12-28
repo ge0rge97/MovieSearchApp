@@ -10,14 +10,14 @@ import SDWebImage
 
 final class TrendingMovieCollectionViewCell: BaseCollectionViewMovieCell {
     
-    static let reuseId: String = "trendingMovieCollectionViewCell"
+    static let reuseId: String = R.CellIds.trendingMovieCollectionViewCell
     let savedButton = UIButton()
     
     weak var cellViewModel: DetailMovieViewModelProtocol? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
             
-            let url = URL(string: "https://image.tmdb.org/t/p/w500/\(viewModel.imageName)")
+            let url = URL(string: "\(R.StringURLs.movieDatabaseImage)\(viewModel.imageName)")
             movieCellImage.sd_setImage(with: url)
         }
     }
@@ -40,16 +40,23 @@ extension TrendingMovieCollectionViewCell {
     }
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            savedButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            savedButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            savedButton.widthAnchor.constraint(equalToConstant: 26),
-            savedButton.heightAnchor.constraint(equalToConstant: 26),
+            savedButton.topAnchor.constraint(equalTo: topAnchor, constant: Constants.savedButtonSpacing),
+            savedButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.savedButtonSpacing),
+            savedButton.widthAnchor.constraint(equalToConstant: Constants.savedButtonSize),
+            savedButton.heightAnchor.constraint(equalToConstant: Constants.savedButtonSize),
         ])
     }
     func configureAppearance() {
         [savedButton].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
         
-        savedButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+        savedButton.setBackgroundImage(R.Images.saveButtonImage, for: .normal)
         savedButton.tintColor = R.Colors.baseButtonColor
+    }
+}
+//MARK: - Constants
+extension TrendingMovieCollectionViewCell {
+    private enum Constants {
+        static let savedButtonSize: CGFloat = 26
+        static let savedButtonSpacing: CGFloat = 10
     }
 }

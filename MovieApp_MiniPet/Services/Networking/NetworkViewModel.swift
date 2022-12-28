@@ -9,7 +9,7 @@ import Foundation
 
 class NetworkViewModel {
     
-    var networkServices = NetworkServices()
+    private let networkServices = NetworkServices()
     
     func fetchMovieData(withPath path: PathMovieCategory, completion: @escaping ([Result]?) -> Void) {
         

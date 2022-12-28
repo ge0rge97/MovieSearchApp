@@ -11,8 +11,7 @@ import FirebaseAuth
 class LoginAuthService {
     static var shared = LoginAuthService()
     private let auth = Auth.auth()
-    
-    let validationCheck = ValidationCheck()
+    private let validationCheck = ValidationCheck()
     
     func login(email: String?, password: String?, completion: @escaping (Swift.Result<User, AuthError>) -> Void) {
         guard validationCheck.isFilledAuthentication(email: email, password: password) else {

@@ -49,12 +49,12 @@ final class HomeViewController: BaseViewController<HomeRootView> {
 private extension HomeViewController {
     
     func setupNavigationBar() {
-        self.navigationItem.title = "Home"
+        self.navigationItem.title = R.Strings.Home.navigationTitle
         self.navigationItem.rightBarButtonItem = self.createLogOutBarButton()
     }
     func createLogOutBarButton() -> UIBarButtonItem {
         return UIBarButtonItem.menuButton(self, action: #selector(logOutButtonAction),
-                                          imageName: "logout", tintColor: R.Colors.baseButtonColor)
+                                          imageName: R.Strings.Home.logOutImageName, tintColor: R.Colors.baseButtonColor)
     }
 }
 //MARK: - Setup CollectionsView with DataSource
@@ -98,9 +98,8 @@ private extension HomeViewController {
             guard let section = HomeCollectionViewSection(rawValue: indexPath.section),
                   let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                       withReuseIdentifier: HomeCollectionViewHeaderCell.reuseId,
-                                                                                      for: indexPath)
-                    as? HomeCollectionViewHeaderCell
-            else { fatalError() }
+                                                                                      for: indexPath) as? HomeCollectionViewHeaderCell
+                else { return UICollectionViewCell() }
             switch section {
             case .upcomingMovies:
                 sectionHeader.configureTitle(title: section.setTitleHeader(forSection: .upcomingMovies))
