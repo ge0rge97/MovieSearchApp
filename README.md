@@ -8,6 +8,7 @@ In app using:
 - Firebase Auth Services
 - SDWebImage
 - MovieDatabase API
+- UserDefaults (for Save Movie)
 - UICollectionView Compositional Layout
 - UIKit
 - All code is written programmatically (#noStoryboard)
