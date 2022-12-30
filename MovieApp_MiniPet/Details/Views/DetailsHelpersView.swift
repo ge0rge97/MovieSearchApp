@@ -41,8 +41,8 @@ private extension DetailsHelpersView {
         NSLayoutConstraint.activate([
             viewIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
             viewIcon.topAnchor.constraint(equalTo: topAnchor),
-            viewIcon.heightAnchor.constraint(equalToConstant: 30),
-            viewIcon.widthAnchor.constraint(equalToConstant: 30),
+            viewIcon.heightAnchor.constraint(equalToConstant: 26),
+            viewIcon.widthAnchor.constraint(equalToConstant: 26),
             
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),

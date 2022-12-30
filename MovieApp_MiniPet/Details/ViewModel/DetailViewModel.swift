@@ -16,6 +16,8 @@ protocol DetailMovieViewModelProtocol: AnyObject {
     var genre: String { get }
     var movieId: Int { get }
     
+    var listViewModelOutput: ViewModelObservable<String> { get }
+    
     func addSelectedMovieToList()
     func getMoreInformation(completion: @escaping (URL) -> ())
 }
@@ -23,6 +25,9 @@ protocol DetailMovieViewModelProtocol: AnyObject {
 class DetailViewModel: DetailMovieViewModelProtocol {
     
     private var item: MovieModel
+    private let listVM = ListViewModel()
+    
+    var listViewModelOutput: ViewModelObservable<String> = ViewModelObservable("")
     
     var title: String {
         return item.movieTitle
@@ -54,7 +59,7 @@ class DetailViewModel: DetailMovieViewModelProtocol {
 extension DetailViewModel {
     
     func addSelectedMovieToList() {
-        let listVM = ListViewModel()
+        listVM.listViewModelOutput = self
         listVM.addItem(item)
     }
 }
@@ -66,5 +71,12 @@ extension DetailViewModel {
         if let url = url {
             completion(url)
         }
+    }
+}
+//MARK: - ListViewModel Output
+extension DetailViewModel: ListViewModelOutput {
+    
+    func listViewModelOutput(withTitle title: String) {
+        self.listViewModelOutput.value = title
     }
 }

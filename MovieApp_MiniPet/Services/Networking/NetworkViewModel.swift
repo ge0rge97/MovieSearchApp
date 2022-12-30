@@ -11,26 +11,24 @@ class NetworkViewModel {
     
     private let networkServices = NetworkServices()
     
-    func fetchMovieData(withPath path: PathMovieCategory, completion: @escaping ([Result]?) -> Void) {
+    func fetchMovieData(withPath path: PathMovieCategory, completion: @escaping (Swift.Result<[Result]?, Error>) -> Void) {
         
         networkServices.getMovieRequest(withPath: path) { data, error in
             if let error = error {
-                print("There are some requesting data error:", error.localizedDescription)
-                completion(nil)
+                completion(.failure(error))
             }
             let decode = self.decodeJSON(withType: MovieNetworkingDataModel.self, fromData: data)
-            completion(decode?.results)
+            completion(.success(decode?.results))
         }
     }
-    func fetchMovieDataWithSearch(withSearchTerm searchTerm: String, completion: @escaping ([Result]?) -> Void) {
+    func fetchMovieDataWithSearch(withSearchTerm searchTerm: String, completion: @escaping (Swift.Result<[Result]?, Error>) -> Void) {
         
         networkServices.getSearchMovieRequest(withSearchTerm: searchTerm) { data, error in
             if let error = error {
-                print("There are some requesting data error:", error.localizedDescription)
-                completion(nil)
+                completion(.failure(error))
             }
             let decode = self.decodeJSON(withType: MovieNetworkingDataModel.self, fromData: data)
-            completion(decode?.results)
+            completion(.success(decode?.results))
         }
     }
 }

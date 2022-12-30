@@ -11,8 +11,8 @@ final class HomeViewController: BaseViewController<HomeRootView> {
     
     private var dataSource: UICollectionViewDiffableDataSource<HomeCollectionViewSection, AnyHashable>!
     
-    private var trendingViewModel: HomeViewModelProtocol?
-    private var upcomingViewModel: HomeViewModelProtocol?
+    private var trendingViewModel: MainViewModelProtocol?
+    private var upcomingViewModel: MainViewModelProtocol?
     private var internetConnectionViewModel: InternetConnectionViewModelProtocol?
     private var logOutViewModel: LogOutViewModelProtocol?
     
@@ -34,8 +34,8 @@ final class HomeViewController: BaseViewController<HomeRootView> {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        trendingViewModel = HomeViewModel()
-        upcomingViewModel = HomeViewModel()
+        trendingViewModel = MainViewModel()
+        upcomingViewModel = MainViewModel()
         internetConnectionViewModel = InternetConnectionViewModel()
         logOutViewModel = LogOutViewModel()
         
@@ -147,6 +147,7 @@ private extension HomeViewController {
         guard let indexPath = self.getCurrentIndexPath(withSender: sender,
                                                        andCollectionView: mainView.collectionView) else { return }
         trendingViewModel?.addSelectedMovieToList(atIndexPath: indexPath)
+        bindListViewModelOutput()
     }
 }
 //MARK: - Bind ViewModels
@@ -183,6 +184,11 @@ private extension HomeViewController {
                 }
             }
         }
+    }
+    func bindListViewModelOutput() {
+        trendingViewModel?.listViewModelOutput.bind({ [weak self] isAdded in
+            self?.getAlertWithError(error: isAdded)
+        })
     }
 }
 //MARK: - LogOut Output Protocol

@@ -9,6 +9,7 @@ import UIKit
 
 final class StartRootView: BaseView {
     
+    private let mainBackgroundImage = UIImageView()
     let loginButton = AuthButton()
     let signUpButton = AuthButton()
     private let stackView = UIStackView()
@@ -16,6 +17,10 @@ final class StartRootView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         NSLayoutConstraint.activate([
+            
+            mainBackgroundImage.widthAnchor.constraint(equalTo: widthAnchor),
+            mainBackgroundImage.heightAnchor.constraint(equalTo: heightAnchor),
+            
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackView.heightAnchor.constraint(equalToConstant: (Constants.buttonHeight * 2) + (Constants.stackViewSpacing * 2)),
@@ -28,12 +33,15 @@ extension StartRootView {
     
     override func setupViews() {
         [loginButton, signUpButton].forEach{ stackView.addArrangedSubview($0) }
-        [stackView].forEach{ addSubview($0) }
+        [mainBackgroundImage, stackView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
-        [stackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false}
+        [mainBackgroundImage, stackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false}
         self.backgroundColor = R.Colors.mainWhite
+        
+        mainBackgroundImage.image = UIImage(named: "mainImageBackground")
+        mainBackgroundImage.contentMode = .scaleAspectFill
         
         loginButton.setTitle(R.Strings.Auth.loginTitle, for: .normal)
         signUpButton.setTitle(R.Strings.Auth.signUpTitle, for: .normal)

@@ -15,7 +15,14 @@ protocol ListViewModelProtocol: MovieViewModelProtocol {
     func removedSelectedMovieFromList(forIndexPath indexPath: IndexPath)
 }
 
+protocol ListViewModelOutput: AnyObject {
+    
+    func listViewModelOutput(withTitle title: String)
+}
+
 class ListViewModel: ListViewModelProtocol {
+    
+    weak var listViewModelOutput: ListViewModelOutput?
     
     private let savedSystem = MementoStateSaver()
     private var selectedIndexPath: IndexPath?
@@ -44,9 +51,9 @@ class ListViewModel: ListViewModelProtocol {
         if let _ = movieData.firstIndex(where: { (arrayItem) -> Bool in
             return arrayItem.movieId == item.movieId
         }) {
-            print("\(item.movieTitle) is already here.")
+            self.listViewModelOutput?.listViewModelOutput(withTitle: "\(item.movieTitle) is already here.")
         } else {
-            print("\(item.movieTitle) added to favourite.")
+            self.listViewModelOutput?.listViewModelOutput(withTitle: "\(item.movieTitle) added to favourite.")
             movieData.insert(item, at: movieData.endIndex)
         }
     }
@@ -61,7 +68,7 @@ extension ListViewModel {
             return arrayItem.movieId == item.movieId
         }) {
             movieData.remove(at: index)
-            print("\(item.movieTitle) removed")
+            self.listViewModelOutput?.listViewModelOutput(withTitle: "\(item.movieTitle) removed")
         }
     }
     func removedSelectedMovieFromList(forIndexPath indexPath: IndexPath) {

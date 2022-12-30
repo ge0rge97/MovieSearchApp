@@ -20,7 +20,6 @@ class InternetConnectionViewModel: InternetConnectionViewModelProtocol {
         self.isInternetConnection = ViewModelObservable(true)
         checkInternetConnection()
     }
-    
     private func checkInternetConnection() {
         
         self.isInternetConnection.value = NetworkMonitor.shared.isConnected

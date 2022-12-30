@@ -10,7 +10,7 @@ import UIKit
 final class SearchViewController: BaseViewController<SearchRootView> {
     
     private var dataSource: UICollectionViewDiffableDataSource<SearchCollectionViewSection, AnyHashable>!
-    private var searchViewModel: SearchMovieViewModelProtocol = SearchMovieViewModel()
+    private var searchViewModel: MainViewModelProtocol = MainViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

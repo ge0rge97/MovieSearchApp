@@ -31,7 +31,7 @@ final class DetailsRootView: BaseView {
             detailsMovieImage.topAnchor.constraint(equalTo: topAnchor),
             detailsMovieImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailsMovieImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            detailsMovieImage.heightAnchor.constraint(equalToConstant: self.bounds.height / 2.5),
+            detailsMovieImage.heightAnchor.constraint(equalToConstant: self.bounds.height / 2),
             
             getDetailsButton.heightAnchor.constraint(equalToConstant: Constants.buttonsHeight),
             
@@ -118,7 +118,7 @@ private extension DetailsRootView {
 //MARK: - Constants
 extension DetailsRootView {
     private enum Constants {
-        static let buttonsHeight: CGFloat = 60
+        static let buttonsHeight: CGFloat = 50
         static let stackViewPadding: CGFloat = 10
         static let stackViewSpacing: CGFloat = 14
     }

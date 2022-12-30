@@ -13,6 +13,11 @@ class BaseViewController<View: UIView>: UIViewController {
     override func loadView() {
         view = View()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
 }
 //MARK: - Get Current IndexPath
 extension BaseViewController {

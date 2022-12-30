@@ -38,7 +38,7 @@ private extension NoInternetConnectionView {
             
             noInternetConnectionLabel.bottomAnchor.constraint(equalTo: noInternetConnectionImage.topAnchor, constant: -Constants.labelSpacing),
             noInternetConnectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.labelSpacing),
-            noInternetConnectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.labelSpacing),
+            noInternetConnectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.labelSpacing)
         ])
     }
     func configureAppearance() {
@@ -50,7 +50,7 @@ private extension NoInternetConnectionView {
         noInternetConnectionLabel.textAlignment = .center
         
         noInternetConnectionImage.image = R.Images.noInternetConnectionViewImage
-        noInternetConnectionImage.backgroundColor = R.Colors.baseButtonColor
+        noInternetConnectionImage.backgroundColor = R.Colors.separator
         noInternetConnectionImage.layer.cornerRadius = 10
     }
 }

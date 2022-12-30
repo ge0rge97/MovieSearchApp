@@ -50,8 +50,8 @@ extension Resources {
             static let signUpTitle: String = "SIGN UP"
             static let loginTransition: String = "Haven't account?"
             static let signUpTransition: String = "Already have an account?"
-            static let emailTextFieldText: String = "Enter Your Email"
-            static let passwordTextFieldText: String = "Enter Your Password"
+            static let emailTextFieldText: String = "Enter Email"
+            static let passwordTextFieldText: String = "Enter Password"
         }
         enum Home {
             static let navigationTitle: String = "Home"

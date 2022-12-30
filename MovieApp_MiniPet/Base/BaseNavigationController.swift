@@ -13,8 +13,6 @@ class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
         configureAppearance()
     }
-    
-    
 }
 //MARK: - Private Methods
 private extension BaseNavigationController {
@@ -31,5 +29,10 @@ private extension BaseNavigationController {
             .foregroundColor: R.Colors.mainWhite,
             .font: R.Fonts.boldFont(withSize: 20) ?? .boldSystemFont(ofSize: 20)
         ]
+        
+        UIBarButtonItem.appearance().tintColor = R.Colors.baseButtonColor
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSAttributedString.Key.font: R.Fonts.boldFont(withSize: 16) ?? .systemFont(ofSize: 16)
+        ], for: .normal)
     }
 }

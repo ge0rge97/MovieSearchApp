@@ -16,6 +16,13 @@ final class DetailsViewController: BaseViewController<DetailsRootView> {
         super.viewDidLoad()
         setupButtonActions()
         setupViewModel()
+        
+        self.navigationItem.leftBarButtonItem = createBackButton()
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 //MARK: - Private Methods
@@ -25,6 +32,12 @@ private extension DetailsViewController {
         mainView.getDetailsButton.addTarget(self, action: #selector(getDetailsButtonAction), for: .touchUpInside)
         mainView.addAddToListViewRecognizer(withTarget: self, andAction: #selector(self.addToListViewRecognizer(_ :)))
         mainView.addSharedViewRecognizer(withTarget: self, andAction: #selector(self.sharedViewRecognizer(_ :)))
+    }
+    func createBackButton() -> UIBarButtonItem {
+        var image = UIImage(systemName: "chevron.backward.circle.fill")
+        image = image?.withRenderingMode(.alwaysOriginal)
+        
+        return UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backButtonAction))
     }
     func setupViewModel() {
         guard let viewModel = viewModel else { return }
@@ -42,6 +55,9 @@ private extension DetailsViewController {
 @objc
 private extension DetailsViewController {
     
+    func backButtonAction() {
+        self.navigationController?.popViewController(animated:true)
+    }
     func getDetailsButtonAction() {
         viewModel?.getMoreInformation(completion: { movieUrl in
             UIApplication.shared.open(movieUrl, options: [:], completionHandler: nil)
@@ -49,6 +65,7 @@ private extension DetailsViewController {
     }
     func addToListViewRecognizer(_ sender: UITapGestureRecognizer) {
         viewModel?.addSelectedMovieToList()
+        self.bindListViewModelOutput()
     }
     func sharedViewRecognizer(_ sender: UITapGestureRecognizer) {
         guard let viewModel = viewModel else { return }
@@ -56,5 +73,13 @@ private extension DetailsViewController {
                                                                                     applicationActivities: nil)
         
         present(sharedActivityController, animated: true)
+    }
+}
+//MARK: - Bind ViewModels
+private extension DetailsViewController {
+    func bindListViewModelOutput() {
+        viewModel?.listViewModelOutput.bind({ [weak self] isAdded in
+            self?.getAlertWithError(error: isAdded)
+        })
     }
 }

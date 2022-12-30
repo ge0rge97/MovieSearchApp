@@ -25,7 +25,7 @@ extension AuthError: LocalizedError {
         case .serverError:
             return NSLocalizedString("Server doesn't work, please try later.", comment: "") //Error - server
         case .invalidFormat:
-            return NSLocalizedString("Please enter correct data format.", comment: "") //Error - invalid format
+            return NSLocalizedString("Enter correct data format (Password 8 char, min 1 upper.letter and number).", comment: "") //Error - invalid format
         case .wrongEmailOrPassword:
             return NSLocalizedString("Wrong Email or Password.", comment: "") //Error - wrongEmailOrPassword
         }

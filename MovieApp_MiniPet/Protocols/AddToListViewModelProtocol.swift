@@ -9,5 +9,6 @@ import Foundation
 
 protocol AddToListViewModelProtocol {
     
+    var listViewModelOutput: ViewModelObservable<String> { get }
     func addSelectedMovieToList(atIndexPath indexPath: IndexPath)
 }
