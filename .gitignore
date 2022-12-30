@@ -1,0 +1,15 @@
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/..xcworkspace/
+MovieApp_MiniPet.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/1024.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/114.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/120.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/180.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/29.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/40.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/57.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/58.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/60.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/80.png
+MovieApp_MiniPet/SupportingFiles/Assets.xcassets/AppIcon.appiconset/87.png
