@@ -24,9 +24,16 @@ final class DetailsRootView: BaseView {
     
     private let helpersStackView = UIStackView()
     private let detailsStackView = UIStackView()
+}
+//MARK: - Required Methods
+extension DetailsRootView {
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func setupViews() {
+        [addToListView, averageRatingView, sharedView].forEach{ helpersStackView.addArrangedSubview($0) }
+        [detailsMoveTitle, releasedMovieYearLabel, genresLabel, detailsMovieOverviewLabel, getDetailsButton, helpersStackView].forEach{ detailsStackView.addArrangedSubview($0) }
+        [detailsMovieImage, detailsStackView].forEach{ addSubview($0) }
+    }
+    override func setupContraints() {
         NSLayoutConstraint.activate([
             detailsMovieImage.topAnchor.constraint(equalTo: topAnchor),
             detailsMovieImage.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -42,6 +49,24 @@ final class DetailsRootView: BaseView {
             helpersStackView.heightAnchor.constraint(equalToConstant: Constants.buttonsHeight)
         ])
     }
+    override func configureAppearance() {
+        super.configureAppearance()
+        [detailsStackView, detailsMovieImage, getDetailsButton, helpersStackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
+        
+        detailsStackView.axis = .vertical
+        detailsStackView.distribution = .fill
+        detailsStackView.spacing = Constants.stackViewSpacing
+        
+        helpersStackView.distribution = .fillEqually
+        
+        getDetailsButton.backgroundColor = R.Colors.mainWhite
+        getDetailsButton.setTitle(R.Strings.Details.movieDetailsButtonTitle, for: .normal)
+        getDetailsButton.setTitleColor(.black, for: .normal)
+        getDetailsButton.layer.cornerRadius = 10
+    }
+}
+//MARK: - Public Methods
+extension DetailsRootView {
     
     func addAddToListViewRecognizer(withTarget target: Any, andAction action: Selector) {
         let addToListRecognizer = UITapGestureRecognizer(target: target, action: action)
@@ -57,32 +82,7 @@ final class DetailsRootView: BaseView {
         averageRatingView.titleLabel.text = rating
     }
 }
-//MARK: - Required Methods
-extension DetailsRootView {
-    
-    override func setupViews() {
-        [addToListView, averageRatingView, sharedView].forEach{ helpersStackView.addArrangedSubview($0) }
-        [detailsMoveTitle, releasedMovieYearLabel, genresLabel, detailsMovieOverviewLabel, getDetailsButton, helpersStackView].forEach{ detailsStackView.addArrangedSubview($0) }
-        [detailsMovieImage, detailsStackView].forEach{ addSubview($0) }
-    }
-    override func configureAppearance() {
-        super.configureAppearance()
-        
-        [detailsStackView, detailsMovieImage, getDetailsButton, helpersStackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false }
-        
-        detailsStackView.axis = .vertical
-        detailsStackView.distribution = .fill
-        detailsStackView.spacing = Constants.stackViewSpacing
-        
-        helpersStackView.distribution = .fillEqually
-        
-        getDetailsButton.backgroundColor = R.Colors.mainWhite
-        getDetailsButton.setTitle(R.Strings.Details.movieDetailsButtonTitle, for: .normal)
-        getDetailsButton.setTitleColor(.black, for: .normal)
-        getDetailsButton.layer.cornerRadius = 10
-    }
-}
-//MARK: - Private Create Methods
+//MARK: - Private Methods
 private extension DetailsRootView {
     
     static func createDetailsMoveTitleLabel() -> DetailsBaseLabel {

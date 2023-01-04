@@ -17,9 +17,15 @@ class AuthBaseView: BaseView {
     let transitionView = TransitionView()
     private let orView = OrView()
     private let mainStackView = UIStackView()
+}
+//MARK: - Required Methods
+extension AuthBaseView {
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func setupViews() {
+        [emailTextField, passwordTextField, authButton].forEach{ mainStackView.addArrangedSubview($0) }
+        [mainStackView, orView, transitionView].forEach{ addSubview($0) }
+    }
+    override func setupContraints() {
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Constants.mainStackViewTopPadding),
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.mainPadding),
@@ -36,14 +42,6 @@ class AuthBaseView: BaseView {
             transitionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
             transitionView.heightAnchor.constraint(equalToConstant: 50)
         ])
-    }
-}
-//MARK: - Required Methods
-extension AuthBaseView {
-    
-    override func setupViews() {
-        [emailTextField, passwordTextField, authButton].forEach{ mainStackView.addArrangedSubview($0) }
-        [mainStackView, orView, transitionView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()

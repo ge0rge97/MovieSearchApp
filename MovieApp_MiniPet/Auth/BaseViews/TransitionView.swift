@@ -16,7 +16,7 @@ final class TransitionView: UIView {
         super.init(frame: frame)
         
         setupViews()
-        constraintsViews()
+        setupConstraints()
         configureAppearance()
     }
     required init?(coder: NSCoder) {
@@ -28,7 +28,7 @@ private extension TransitionView {
     func setupViews() {
         [transitionLabel, transitionButton].forEach{ addSubview($0) }
     }
-    func constraintsViews() {
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             transitionLabel.topAnchor.constraint(equalTo: topAnchor),
             transitionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),

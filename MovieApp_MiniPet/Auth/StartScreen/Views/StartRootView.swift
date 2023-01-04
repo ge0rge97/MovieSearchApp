@@ -13,11 +13,15 @@ final class StartRootView: BaseView {
     let loginButton = AuthButton()
     let signUpButton = AuthButton()
     private let stackView = UIStackView()
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+}
+//MARK: - Required Methods
+extension StartRootView {
+    override func setupViews() {
+        [loginButton, signUpButton].forEach{ stackView.addArrangedSubview($0) }
+        [mainBackgroundImage, stackView].forEach{ addSubview($0) }
+    }
+    override func setupContraints() {
         NSLayoutConstraint.activate([
-            
             mainBackgroundImage.widthAnchor.constraint(equalTo: widthAnchor),
             mainBackgroundImage.heightAnchor.constraint(equalTo: heightAnchor),
             
@@ -27,20 +31,12 @@ final class StartRootView: BaseView {
             stackView.widthAnchor.constraint(equalToConstant: self.bounds.width - (Constants.mainSpacing * 2))
         ])
     }
-}
-//MARK: - Required Methods
-extension StartRootView {
-    
-    override func setupViews() {
-        [loginButton, signUpButton].forEach{ stackView.addArrangedSubview($0) }
-        [mainBackgroundImage, stackView].forEach{ addSubview($0) }
-    }
     override func configureAppearance() {
         super.configureAppearance()
         [mainBackgroundImage, stackView].forEach{ $0.translatesAutoresizingMaskIntoConstraints = false}
         self.backgroundColor = R.Colors.mainWhite
         
-        mainBackgroundImage.image = UIImage(named: "mainImageBackground")
+        mainBackgroundImage.image = R.Images.startScreenBackgroundImage
         mainBackgroundImage.contentMode = .scaleAspectFill
         
         loginButton.setTitle(R.Strings.Auth.loginTitle, for: .normal)
@@ -53,7 +49,6 @@ extension StartRootView {
 }
 //MARK: - Constants
 extension StartRootView {
-    
     private enum Constants {
         
         static let buttonHeight: CGFloat = 40

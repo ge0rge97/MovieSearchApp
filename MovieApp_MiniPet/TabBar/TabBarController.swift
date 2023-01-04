@@ -29,15 +29,7 @@ extension TabBarController {
     
     private func configureAppearance() {
         
-        let tabBarAppearance = UITabBarAppearance()
-        let tabBarItemAppearance = UITabBarItemAppearance()
-
-        tabBarItemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.Colors.mainWhite]
-        tabBarItemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.Colors.separator]
-        tabBarAppearance.backgroundColor = R.Colors.mainBackground
-        tabBar.standardAppearance = tabBarAppearance
-        tabBar.scrollEdgeAppearance = tabBarAppearance
-        tabBar.tintColor = R.Colors.mainWhite
+        self.setupTabBarAppearance()
         
         let controllers: [BaseNavigationController] = Tabs.allCases.map { tab in
             let controller = BaseNavigationController(rootViewController: getControllers(forTab: tab))
@@ -60,6 +52,17 @@ extension TabBarController {
     }
     private func selectTab(withTab tab: Tabs) {
         selectedIndex = tab.rawValue
+    }
+    private func setupTabBarAppearance() {
+        let tabBarAppearance = UITabBarAppearance()
+        let tabBarItemAppearance = UITabBarItemAppearance()
+
+        tabBarItemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.Colors.mainWhite]
+        tabBarItemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.Colors.separator]
+        tabBarAppearance.backgroundColor = R.Colors.mainBackground
+        tabBar.standardAppearance = tabBarAppearance
+        tabBar.scrollEdgeAppearance = tabBarAppearance
+        tabBar.tintColor = R.Colors.mainWhite
     }
 }
 //MARK: - TabBar Resources

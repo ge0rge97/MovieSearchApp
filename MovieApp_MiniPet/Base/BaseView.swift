@@ -13,6 +13,10 @@ class BaseView: UIView {
         setupViews()
         configureAppearance()
     }
+    override func updateConstraints() {
+        super.updateConstraints()
+        setupContraints()
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -20,6 +24,7 @@ class BaseView: UIView {
 //MARK: - Inherited Methods
 extension BaseView {
     @objc func setupViews() {}
+    @objc func setupContraints() {}
     @objc func configureAppearance() {
         self.backgroundColor = R.Colors.mainBackground
     }

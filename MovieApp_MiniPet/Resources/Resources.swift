@@ -34,6 +34,7 @@ extension Resources {
 //MARK: - Images
 extension Resources {
     enum Images {
+        static let startScreenBackgroundImage: UIImage? = UIImage(named: "mainImageBackground")
         static let noInternetConnectionViewImage: UIImage? = UIImage(named: "noInternetConnectionImage")
         static let saveButtonImage: UIImage? = UIImage(systemName: "heart.fill")
         static let removeButtonImage: UIImage? = UIImage(systemName: "trash.fill")

@@ -11,13 +11,17 @@ import Network
 final class HomeRootView: BaseView {
     
     lazy var collectionView = BaseCollectionView(withLayout: createCompositionalLayout())
-    let compositionalLayoutFactory = CompositionalLayoutFactory()
+    private let compositionalLayoutFactory = CompositionalLayoutFactory()
     let indicatorView = UIActivityIndicatorView()
     
-    let noInternetConnectionView = NoInternetConnectionView()
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    private let noInternetConnectionView = NoInternetConnectionView()
+}
+//MARK: - Required Methods
+extension HomeRootView {
+    override func setupViews() {
+        [collectionView, indicatorView, noInternetConnectionView].forEach{ addSubview($0) }
+    }
+    override func setupContraints() {
         NSLayoutConstraint.activate([
             indicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             indicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -27,12 +31,6 @@ final class HomeRootView: BaseView {
             noInternetConnectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             noInternetConnectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
         ])
-    }
-}
-//MARK: - Required Methods
-extension HomeRootView {
-    override func setupViews() {
-        [collectionView, indicatorView, noInternetConnectionView].forEach{ addSubview($0) }
     }
     override func configureAppearance() {
         super.configureAppearance()
